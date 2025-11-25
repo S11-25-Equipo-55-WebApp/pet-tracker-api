@@ -40,21 +40,43 @@ namespace petTrackerApi.Services
 
         public async Task<(bool Exito, string Error, UsuarioDTO dto)> Registro(UsuarioRegistroDTO dto)
         {
-            // 1️⃣ Validación de nombre único
-            if (!_repo.IsUniqueUsuario(dto.UserName))
-                return (false, "Nombre de usuario ya existe.", null);
+            //validaciones básicas
+            if (string.IsNullOrWhiteSpace(dto.Nombre))
+                throw new ArgumentException("Nombre de usuario no debe estar en blanco.");
 
-            // 2️⃣ Mapeo DTO → Entity
+            if (string.IsNullOrWhiteSpace(dto.UserName))
+                throw new ArgumentException("El usuario es un campo obligatorio y no puede ser una cadena vacía.");
+
+            if (string.IsNullOrWhiteSpace(dto.Email))
+                throw new ArgumentException("El campo 'email' es obligatorio y está ausente en la solicitud.");
+
+            if (string.IsNullOrWhiteSpace(dto.Password))
+                throw new ArgumentException("La contraseña es un campo obligatorio y no puede ser una cadena vacía.");
+            if (dto.Password.Length < 8)
+                throw new ArgumentException("El payload no cumple con una regla de validación de negocio fundamental: la longitud mínima de la contraseña es 8 caracteres.");
+
+            if (dto.Password.Length > 10)
+                throw new ArgumentException("La solicitud debe ser rechazada inmediatamente porque el límite de longitud del campo ha sido excedido.");
+
+            //Validación de user name, nombre único y el email
+            if (!_repo.IsUniqueUsuario(dto.UserName))
+                throw new ArgumentException ("Nombre de usuario ya existe.");
+
+            if (string.IsNullOrWhiteSpace(dto.Email))
+                throw new ArgumentException("El campo 'email' es obligatorio y está ausente en la solicitud.");
+           
+
+            //Mapeo DTO → Entity
             var entity = Mapper.UsuarioRegistroDTOToEntity(dto);
 
-            // 3️⃣ Hash del password en el entity correcto
+            // Hash del password en el entity correcto
             var hasher = new PasswordHasher<Usuario>();
             entity.Password = hasher.HashPassword(entity, dto.Password);
 
-            // 4️⃣ Guardamos EL ENTITY QUE TIENE EL HASH
+            //Guardar EL ENTITY QUE TIENE EL HASH
             var creado = await _repo.Registro(entity);
 
-            // 5️⃣ Devolvemos DTO de salida
+            //Devolver DTO de salida
             var usuarioDTO = Mapper.UsuarioMapToDTO(creado);
 
             return (true, null, usuarioDTO);

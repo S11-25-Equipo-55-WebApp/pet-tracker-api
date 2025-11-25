@@ -37,8 +37,11 @@ namespace petTrackerApi.Controllers
         {
             try
             {
-                var usuario = await _service.Registro(dto);
-                return Ok(usuario);
+               var resultado = await _service.Registro(dto);
+               if(!resultado.Exito) return BadRequest(resultado.Error);
+
+                var usuarioCreado = resultado.dto;
+                return CreatedAtAction(nameof(GetById), new { id = usuarioCreado.UsuarioId }, usuarioCreado);
             }
             catch (Exception ex)
             {
@@ -66,7 +69,15 @@ namespace petTrackerApi.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<UsuarioLoginRespuestaDTO>> Login([FromBody] UsuarioLoginDTO dto)
         {
-            return await _service.Login(dto);
+            //return await _service.Login(dto);
+            var resultado = await _service.Login(dto);
+
+            if (resultado.Usuario == null || string.IsNullOrEmpty(resultado.Token))
+            {
+                return Unauthorized("Credenciales inválidas.");
+            }
+
+            return Ok(resultado);
         }
 
         [HttpPost("{id}/CambiarPassword")]
