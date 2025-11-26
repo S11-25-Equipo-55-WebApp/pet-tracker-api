@@ -6,7 +6,7 @@ namespace petTrackerApi.Services
     {
         Task<IEnumerable<EspecieDTO>> Get();
         Task<EspecieDTO> GetById(int id);
-        Task<(bool Exito, string Error, EspecieDTO dto)> Registro(UsuarioRegistroDTO dto);
+        Task<(bool Exito, string Error, EspecieDTO dto)> Registro(EspecieDTO dto);
         Task<EspecieDTO> Update(int id, EspecieDTO dto);
         Task<bool> Delete(int id);
     }

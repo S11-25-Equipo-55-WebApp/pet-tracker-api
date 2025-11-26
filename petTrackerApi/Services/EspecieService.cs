@@ -28,7 +28,7 @@ namespace petTrackerApi.Services
             return especie == null ? null : Mapper.EspecieMapToDTO(especie);
         }
 
-        public Task<(bool Exito, string Error, EspecieDTO dto)> Registro(UsuarioRegistroDTO dto)
+        public Task<(bool Exito, string Error, EspecieDTO dto)> Registro(EspecieDTO dto)
         {
             throw new NotImplementedException();
         }

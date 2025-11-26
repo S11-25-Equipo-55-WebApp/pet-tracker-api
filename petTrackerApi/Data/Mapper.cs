@@ -38,7 +38,7 @@ namespace petTrackerApi.Data
             };
         }
 
-            public static EspecieDTO EspecieMapToDTO(Especie especie)
+        public static EspecieDTO EspecieMapToDTO(Especie especie)
         {
             return new EspecieDTO
             {
@@ -55,6 +55,25 @@ namespace petTrackerApi.Data
                 EspecieId = dtoEspecie.EspecieId,
                 Codigo = dtoEspecie.Codigo,
                 Nombre = dtoEspecie.Nombre
+            };
+        }
+        public static RazaDTO RazaMapToDTO(Raza raza)
+        {
+            return new RazaDTO
+            {
+                RazaId = raza.RazaId,
+                Codigo = raza.Codigo,
+                Nombre = raza.Nombre
+            };
+        }
+
+        public static Raza RazaDTOMapToEntity(RazaDTO dtoRaza)
+        {
+            return new Raza
+            {
+                RazaId = dtoRaza.RazaId,
+                Codigo = dtoRaza.Codigo,
+                Nombre = dtoRaza.Nombre
             };
         }
     }
