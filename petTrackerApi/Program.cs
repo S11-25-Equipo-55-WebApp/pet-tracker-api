@@ -14,7 +14,7 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
 builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
-builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
+builder.Services.AddScoped<IEspecieService, EspecieService>();
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
