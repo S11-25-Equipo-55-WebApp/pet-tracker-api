@@ -10,7 +10,7 @@ namespace petTrackerApi.Data
             return new UsuarioDTO
             {
                 UsuarioId = u.UsuarioId,
-                UserName = u.UserName,
+                UserName = u.Username,
                 Email = u.Email,
                 Nombre = u.Nombre
             };
@@ -21,7 +21,7 @@ namespace petTrackerApi.Data
             return new Usuario
             {
                 UsuarioId = dto.UsuarioId,
-                UserName = dto.UserName,
+                Username = dto.UserName,
                 Email = dto.Email,
                 Nombre = dto.Nombre
             };
@@ -31,7 +31,7 @@ namespace petTrackerApi.Data
         {
             return new Usuario
             {
-                UserName = dto.UserName,
+                Username = dto.UserName,
                 Email = dto.Email,
                 Nombre = dto.Nombre,
                 Password = dto.Password

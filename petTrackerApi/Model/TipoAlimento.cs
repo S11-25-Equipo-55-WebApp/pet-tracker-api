@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace petTrackerApi.Model;
 
-public partial class Especie
+public partial class TipoAlimento
 {
-    public int EspecieId { get; set; }
+    public int TipoAlimentoId { get; set; }
 
     public string Nombre { get; set; } = null!;
 
@@ -15,5 +15,5 @@ public partial class Especie
 
     public DateTime EditadoAt { get; set; }
 
-    public virtual ICollection<Mascota> Mascota { get; set; } = new List<Mascota>();
+    public virtual ICollection<Dieta> Dieta { get; set; } = new List<Dieta>();
 }

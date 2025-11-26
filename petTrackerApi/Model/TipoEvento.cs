@@ -3,17 +3,19 @@ using System.Collections.Generic;
 
 namespace petTrackerApi.Model;
 
-public partial class Especie
+public partial class TipoEvento
 {
-    public int EspecieId { get; set; }
+    public int TipoEventoId { get; set; }
 
     public string Nombre { get; set; } = null!;
 
     public string Codigo { get; set; } = null!;
 
+    public string Descripcion { get; set; } = null!;
+
     public DateTime CreadoAt { get; set; }
 
     public DateTime EditadoAt { get; set; }
 
-    public virtual ICollection<Mascota> Mascota { get; set; } = new List<Mascota>();
+    public virtual ICollection<Calendario> Calendarios { get; set; } = new List<Calendario>();
 }

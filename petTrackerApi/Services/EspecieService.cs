@@ -4,13 +4,13 @@ namespace petTrackerApi.Services
 {
     public class EspecieService
     {
-        //private readonly IUsuarioRepository _repo;
-        //private readonly IConfiguration _config;
+        private readonly IEspecieRepository _repo;
+        private readonly IConfiguration _config;
 
-        //public UsuarioService(IUsuarioRepository repo, IConfiguration config)
-        //{
-        //    _repo = repo;
-        //    _config = config;
-        //}
+        public EspecieService(IEspecieRepository repo, IConfiguration config)
+        {
+            _repo = repo;
+            _config = config;
+        }
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace petTrackerApi.Model;
 
-public partial class Especie
+public partial class Raza
 {
-    public int EspecieId { get; set; }
+    public int RazaId { get; set; }
 
     public string Nombre { get; set; } = null!;
 

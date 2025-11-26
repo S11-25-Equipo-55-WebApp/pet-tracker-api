@@ -117,7 +117,7 @@ namespace petTrackerApi.Services
                 Subject = new ClaimsIdentity(new[]
                 {
                 new Claim(ClaimTypes.NameIdentifier, usuario.UsuarioId.ToString()),
-                new Claim(ClaimTypes.Name, usuario.UserName)
+                new Claim(ClaimTypes.Name, usuario.Username)
             }),
                 Expires = DateTime.UtcNow.AddDays(1),
                 SigningCredentials = new SigningCredentials(
