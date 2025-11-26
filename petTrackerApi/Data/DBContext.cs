@@ -51,24 +51,6 @@ namespace petTrackerApi.Data
 
         public virtual DbSet<Vacuna> Vacunas { get; set; }
 
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            foreach (var entry in ChangeTracker.Entries<Usuario>())
-            {
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Entity.CreadoAt = DateTime.Now;
-                    entry.Entity.EditadoAt = DateTime.Now;
-                }
-                else if (entry.State == EntityState.Modified)
-                {
-                    entry.Entity.EditadoAt = DateTime.Now;
-                }
-            }
-
-            return await base.SaveChangesAsync(cancellationToken);
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Calendario>(entity =>

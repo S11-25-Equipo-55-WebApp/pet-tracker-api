@@ -3,6 +3,7 @@ using petTrackerApi.DTO;
 using petTrackerApi.Model;
 using petTrackerApi.Repository.GenericRepository;
 using petTrackerApi.Services.GenericServices;
+using petTrackerApi.Helpers;
 
 namespace petTrackerApi.Services
 {
@@ -29,8 +30,12 @@ namespace petTrackerApi.Services
         }
         public async Task<MascotaDTO> Create(MascotaDTO dtoMascota)
         {
+            dtoMascota.Codigo = CodeGenerator.GenerarCodigo(dtoMascota.Nombre, dtoMascota.CreadoAt);
+            dtoMascota.CreadoAt = DateTime.Now;
+            dtoMascota.EditadoAt = DateTime.Now;
+
             var mapMascota = Mapper.MascotaDTOMapToEntity(dtoMascota);
-            var mascotaCreada = _repository.Create(mapMascota);
+            var mascotaCreada = await _repository.Create(mapMascota);
             return dtoMascota;
         }
 

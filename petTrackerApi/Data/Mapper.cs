@@ -102,7 +102,9 @@ namespace petTrackerApi.Data
                 EspecieId = dtoMascota.EspecieId,
                 RazaId = dtoMascota.RazaId,
                 FotoMascota = dtoMascota.FotoMascota,
-                UsuarioId = dtoMascota.UsuarioId
+                UsuarioId = dtoMascota.UsuarioId,
+                CreadoAt = dtoMascota.CreadoAt,
+                EditadoAt = dtoMascota.EditadoAt
             };
         }
         public static Mascota MascotaRegistroDTOToEntity(MascotaRegistroDTO dtoMascota)

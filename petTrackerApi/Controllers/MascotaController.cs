@@ -2,6 +2,7 @@
 using petTrackerApi.DTO;
 using petTrackerApi.Services;
 using petTrackerApi.Services.GenericServices;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -35,8 +36,17 @@ namespace petTrackerApi.Controllers
 
         // POST api/<MascotaController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> CrearMascota([FromBody] MascotaDTO dtoMascota)
         {
+            try
+            {
+                var mascotaCreada = await _service.Create(dtoMascota);
+                return CreatedAtAction(nameof(GetById), new { id = mascotaCreada.MascotaId }, mascotaCreada);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT api/<MascotaController>/5

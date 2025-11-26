@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using petTrackerApi.Data;
+using petTrackerApi.Helpers;
 using petTrackerApi.Model;
 using petTrackerApi.Repository.GenericRepository;
 
