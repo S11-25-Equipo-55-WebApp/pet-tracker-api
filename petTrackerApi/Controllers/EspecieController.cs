@@ -1,0 +1,52 @@
+﻿using Microsoft.AspNetCore.Mvc;
+using petTrackerApi.DTO;
+using petTrackerApi.Services;
+
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+namespace petTrackerApi.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EspecieController : ControllerBase
+    {
+        private readonly IEspecieService _service;
+
+        public EspecieController(IEspecieService service)
+        {
+            _service = service;
+        }
+
+        // GET: api/<EspecieController>
+        [HttpGet]
+        public async Task<IEnumerable<EspecieDTO>> Get()
+        {
+            return await _service.Get();
+        }
+
+        // GET api/<EspecieController>/5
+        [HttpGet("{id}")]
+        public string Get(int id)
+        {
+            return "value";
+        }
+
+        // POST api/<EspecieController>
+        [HttpPost]
+        public void Post([FromBody] string value)
+        {
+        }
+
+        // PUT api/<EspecieController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] string value)
+        {
+        }
+
+        // DELETE api/<EspecieController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+        }
+    }
+}

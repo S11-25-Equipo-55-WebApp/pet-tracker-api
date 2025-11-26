@@ -7,5 +7,6 @@ namespace petTrackerApi.Data
     {
         public DBContext(DbContextOptions<DBContext> options) : base(options) { }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<Especie> Especies { get; set; }
     }
 }
