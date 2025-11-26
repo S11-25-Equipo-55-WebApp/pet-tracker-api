@@ -10,6 +10,9 @@ using System.Text;
 
 namespace petTrackerApi.Repository
 {
+
+    
+
     public class UsuarioRepository : IUsuarioRepository
     {
         private readonly DBContext _db;
@@ -32,12 +35,12 @@ namespace petTrackerApi.Repository
         public async Task<Usuario> GetByUserName(string username)
         {
             return await _db.Usuarios.FirstOrDefaultAsync(
-                u => u.UserName.ToLower() == username.ToLower());
+                u => u.Username.ToLower() == username.ToLower());
         }
 
         public bool IsUniqueUsuario(string username)
         {
-            return !_db.Usuarios.Any(u => u.UserName.ToLower() == username.ToLower());
+            return !_db.Usuarios.Any(u => u.Username.ToLower() == username.ToLower());
         }
 
         public async Task<Usuario> Registro(Usuario usuario)
@@ -53,7 +56,7 @@ namespace petTrackerApi.Repository
             if (usuarioDB == null) return null;
 
             usuarioDB.Nombre = usuarioActualizado.Nombre;
-            usuarioDB.UserName = usuarioActualizado.UserName;
+            usuarioDB.Username = usuarioActualizado.Username;
             usuarioDB.Email = usuarioActualizado.Email;
 
             if (!string.IsNullOrWhiteSpace(usuarioActualizado.Password))
