@@ -6,7 +6,7 @@
         Task<TEntity> GetById(int id);
         Task<TEntity> Create(TEntity entity);
         Task<TEntity> Update(int id, TEntity entity);
-        Task<TEntity> Delete(int id);
+        Task<TEntity> Delete(TEntity entity);
 
     }
 }

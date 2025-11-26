@@ -1,14 +1,10 @@
-﻿using petTrackerApi.Model;
-
-namespace petTrackerApi.DTO
+﻿namespace petTrackerApi.DTO
 {
-    public class MascotaDTO
+    public class MascotaRegistroDTO
     {
         public int MascotaId { get; set; }
 
         public string Nombre { get; set; } = null!;
-
-        public string Codigo { get; set; } = null!;
 
         public DateOnly? FechaNacimiento { get; set; }
 
@@ -19,9 +15,5 @@ namespace petTrackerApi.DTO
         public string FotoMascota { get; set; }
 
         public int UsuarioId { get; set; }
-
-        public DateTime CreadoAt { get; set; }
-
-        public DateTime EditadoAt { get; set; }
     }
 }

@@ -17,7 +17,7 @@ public partial class Mascota
 
     public int RazaId { get; set; }
 
-    public int FotoMascotaId { get; set; }
+    public string FotoMascota { get; set; }
 
     public int UsuarioId { get; set; }
 
@@ -36,8 +36,6 @@ public partial class Mascota
     public virtual ICollection<Dieta> Dieta { get; set; } = new List<Dieta>();
 
     public virtual Especie Especie { get; set; } = null!;
-
-    public virtual FotoMascota FotoMascota { get; set; } = null!;
 
     public virtual Raza Raza { get; set; } = null!;
 

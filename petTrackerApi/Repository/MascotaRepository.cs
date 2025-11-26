@@ -1,10 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using petTrackerApi.Data;
 using petTrackerApi.Model;
+using petTrackerApi.Repository.GenericRepository;
 
 namespace petTrackerApi.Repository
 {
-    public class MascotaRepository : IMascotaRepository
+    public class MascotaRepository : IGenericRepository<Mascota>
     {
         private readonly DBContext _db;
 
@@ -23,7 +24,7 @@ namespace petTrackerApi.Repository
             return await _db.Mascota.FindAsync(id);
         }
 
-        public async Task<Mascota> Registro(Mascota mascota)
+        public async Task<Mascota> Create(Mascota mascota)
         {
             _db.Mascota.Add(mascota);
             await _db.SaveChangesAsync();
@@ -32,28 +33,14 @@ namespace petTrackerApi.Repository
 
         public async Task<Mascota> Update(int id, Mascota mascota)
         {
-            var mascotaDB = await _db.Mascota.FindAsync(id);
-            if (mascotaDB == null) return null;
-
-            mascotaDB.Nombre = mascota.Nombre;
-            mascotaDB.FechaNacimiento = mascota.FechaNacimiento;
-            mascotaDB.EspecieId = mascota.EspecieId;
-            mascotaDB.RazaId = mascota.RazaId;
-            mascotaDB.FotoMascotaId = mascota.FotoMascotaId;
-            mascotaDB.EditadoAt = DateTime.Now;
-
             await _db.SaveChangesAsync();
-            return mascotaDB;
+            return mascota;
         }
-        public async Task<Mascota> Delete(int id)
+        public async Task<Mascota> Delete(Mascota mascota)
         {
-            var mascotaDB = await _db.Mascota.FindAsync(id);
-            if (mascotaDB == null) return null;
-
-            _db.Mascota.Remove(mascotaDB);
+            _db.Mascota.Remove(mascota);
             await _db.SaveChangesAsync();
-
-            return mascotaDB;
+            return mascota;
         }
     }
 }

@@ -76,6 +76,48 @@ namespace petTrackerApi.Data
                 Nombre = dtoRaza.Nombre
             };
         }
+        public static MascotaDTO MascotaMapToDTO(Mascota mascota)
+        {
+            return new MascotaDTO
+            {
+                MascotaId = mascota.MascotaId,
+                Nombre = mascota.Nombre,
+                Codigo = mascota.Codigo,
+                FechaNacimiento = mascota.FechaNacimiento,
+                EspecieId = mascota.EspecieId,
+                RazaId = mascota.RazaId,
+                FotoMascota = mascota.FotoMascota,
+                UsuarioId = mascota.UsuarioId
+            };
+        }
+
+        public static Mascota MascotaDTOMapToEntity(MascotaDTO dtoMascota)
+        {
+            return new Mascota
+            {
+                MascotaId = dtoMascota.MascotaId,
+                Nombre = dtoMascota.Nombre,
+                Codigo = dtoMascota.Codigo,
+                FechaNacimiento = dtoMascota.FechaNacimiento,
+                EspecieId = dtoMascota.EspecieId,
+                RazaId = dtoMascota.RazaId,
+                FotoMascota = dtoMascota.FotoMascota,
+                UsuarioId = dtoMascota.UsuarioId
+            };
+        }
+        public static Mascota MascotaRegistroDTOToEntity(MascotaRegistroDTO dtoMascota)
+        {
+            return new Mascota
+            {
+                MascotaId = dtoMascota.MascotaId,
+                Nombre = dtoMascota.Nombre,
+                FechaNacimiento = dtoMascota.FechaNacimiento,
+                EspecieId = dtoMascota.EspecieId,
+                RazaId = dtoMascota.RazaId,
+                FotoMascota = dtoMascota.FotoMascota,
+                UsuarioId = dtoMascota.UsuarioId
+            };
+        }
     }
         //public class Mapper
         //{

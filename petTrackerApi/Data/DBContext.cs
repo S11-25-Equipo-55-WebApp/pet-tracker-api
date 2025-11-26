@@ -371,7 +371,7 @@ namespace petTrackerApi.Data
                     .HasColumnName("editadoAt");
                 entity.Property(e => e.EspecieId).HasColumnName("especieId");
                 entity.Property(e => e.FechaNacimiento).HasColumnName("fechaNacimiento");
-                entity.Property(e => e.FotoMascotaId).HasColumnName("fotoMascotaId");
+                entity.Property(e => e.FotoMascota).HasMaxLength(200).HasColumnName("fotoMascota");
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(50)
                     .IsUnicode(false)
@@ -383,11 +383,6 @@ namespace petTrackerApi.Data
                     .HasForeignKey(d => d.EspecieId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Mascota_Especie");
-
-                entity.HasOne(d => d.FotoMascota).WithMany(p => p.Mascota)
-                    .HasForeignKey(d => d.FotoMascotaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Mascota_FotoMascota");
 
                 entity.HasOne(d => d.Raza).WithMany(p => p.Mascota)
                     .HasForeignKey(d => d.RazaId)
