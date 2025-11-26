@@ -23,8 +23,6 @@ namespace petTrackerApi.Data
 
         public virtual DbSet<ExamenMedico> ExamenMedicos { get; set; }
 
-        public virtual DbSet<FotoMascota> FotoMascota { get; set; }
-
         public virtual DbSet<Mascota> Mascota { get; set; }
 
         public virtual DbSet<Medicacion> Medicaciones { get; set; }
@@ -332,26 +330,6 @@ namespace petTrackerApi.Data
                     .HasForeignKey(d => d.TipoExamenId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ExamenMedico_TipoExamen");
-            });
-
-            modelBuilder.Entity<FotoMascota>(entity =>
-            {
-                entity.HasKey(e => e.FotoMascotaId);
-
-                entity.Property(e => e.FotoMascotaId).HasColumnName("fotoMascotaId");
-                entity.Property(e => e.Codigo)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("codigo");
-                entity.Property(e => e.Descripcion)
-                    .HasColumnType("text")
-                    .HasColumnName("descripcion");
-                entity.Property(e => e.FotoUrl)
-                    .IsUnicode(false)
-                    .HasColumnName("fotoUrl");
-                entity.Property(e => e.SubidaAt)
-                    .HasColumnType("datetime")
-                    .HasColumnName("subidaAt");
             });
 
             modelBuilder.Entity<Mascota>(entity =>
