@@ -1,9 +1,10 @@
-﻿using petTrackerApi.Data;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using petTrackerApi.Data;
 using petTrackerApi.DTO;
 using petTrackerApi.Repository;
 using petTrackerApi.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 
 namespace petTrackerApi.Controllers
 {
@@ -32,6 +33,7 @@ namespace petTrackerApi.Controllers
             return Ok(result);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CrearUsuario([FromBody] UsuarioRegistroDTO dto)
         {
@@ -49,6 +51,7 @@ namespace petTrackerApi.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult<UsuarioDTO>> Update(int id, [FromBody] UsuarioDTO dto)
         {
@@ -58,6 +61,7 @@ namespace petTrackerApi.Controllers
             return Ok(actualizado);
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
@@ -65,6 +69,7 @@ namespace petTrackerApi.Controllers
             if (!ok) return NotFound();
             return NoContent();
         }
+
 
         [HttpPost("login")]
         public async Task<ActionResult<UsuarioLoginRespuestaDTO>> Login([FromBody] UsuarioLoginDTO dto)
@@ -80,6 +85,7 @@ namespace petTrackerApi.Controllers
             return Ok(resultado);
         }
 
+        [Authorize]
         [HttpPost("{id}/CambiarPassword")]
         public async Task<IActionResult> CambiarPassword(int id, [FromBody] CambioPasswordDTO dto)
         {
