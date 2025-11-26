@@ -1,4 +1,5 @@
-﻿using petTrackerApi.DTO;
+﻿using petTrackerApi.Data;
+using petTrackerApi.DTO;
 using petTrackerApi.Repository;
 
 namespace petTrackerApi.Services
@@ -15,14 +16,16 @@ namespace petTrackerApi.Services
         }
 
 
-        public Task<IEnumerable<EspecieDTO>> Get()
+        public async Task<IEnumerable<EspecieDTO>> Get()
         {
-            throw new NotImplementedException();
+            var lista = await _repo.Get();
+            return lista.Select(Mapper.EspecieMapToDTO);
         }
-
-        public Task<EspecieDTO> GetById(int id)
+        
+        public async Task<EspecieDTO> GetById(int id)
         {
-            throw new NotImplementedException();
+            var especie = await _repo.GetById(id);
+            return especie == null ? null : Mapper.EspecieMapToDTO(especie);
         }
 
         public Task<(bool Exito, string Error, EspecieDTO dto)> Registro(UsuarioRegistroDTO dto)

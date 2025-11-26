@@ -37,30 +37,49 @@ namespace petTrackerApi.Data
                 Password = dto.Password
             };
         }
+
+            public static EspecieDTO EspecieMapToDTO(Especie especie)
+        {
+            return new EspecieDTO
+            {
+                EspecieId = especie.EspecieId,
+                Codigo = especie.Codigo,
+                Nombre = especie.Nombre
+            };
+        }
+
+        public static Especie EspecieDTOMapToEntity(EspecieDTO dtoEspecie)
+        {
+            return new Especie
+            {
+                EspecieId = dtoEspecie.EspecieId,
+                Codigo = dtoEspecie.Codigo,
+                Nombre = dtoEspecie.Nombre
+            };
+        }
     }
+        //public class Mapper
+        //{
+        //    public static UsuarioDTO UsuarioMapToDTO(Usuario usuario)
+        //    {
+        //        return new UsuarioDTO
+        //        {
+        //            UsuarioId = usuario.UsuarioId,
+        //            Email = usuario.Email,
+        //            Nombre = usuario.Nombre,
+        //            UserName = usuario.UserName,
+        //        };
+        //    }
+        //    public static Usuario UsuarioDTOMapToEntity(UsuarioDTO usuario)
+        //    {
+        //        return new Usuario
+        //        {
+        //            UsuarioId = usuario.UsuarioId,
+        //            Email = usuario.Email,
+        //            Nombre = usuario.Nombre,
+        //            UserName = usuario.UserName,
 
-    //public class Mapper
-    //{
-    //    public static UsuarioDTO UsuarioMapToDTO(Usuario usuario)
-    //    {
-    //        return new UsuarioDTO
-    //        {
-    //            UsuarioId = usuario.UsuarioId,
-    //            Email = usuario.Email,
-    //            Nombre = usuario.Nombre,
-    //            UserName = usuario.UserName,
-    //        };
-    //    }
-    //    public static Usuario UsuarioDTOMapToEntity(UsuarioDTO usuario)
-    //    {
-    //        return new Usuario
-    //        {
-    //            UsuarioId = usuario.UsuarioId,
-    //            Email = usuario.Email,
-    //            Nombre = usuario.Nombre,
-    //            UserName = usuario.UserName,
-
-    //        };
-    //    }
-    //}
-}
+        //        };
+        //    }
+        //}
+    }
