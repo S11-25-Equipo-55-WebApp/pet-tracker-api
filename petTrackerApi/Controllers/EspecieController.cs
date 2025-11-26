@@ -33,23 +33,5 @@ namespace petTrackerApi.Controllers
             if (result == null) return NotFound();
             return Ok(result);
         }
-
-        // POST api/<EspecieController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<EspecieController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<EspecieController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }
