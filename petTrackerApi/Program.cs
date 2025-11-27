@@ -30,6 +30,12 @@ builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
 builder.Services.AddScoped<IRazaRepository, RazaRepository>();
 builder.Services.AddScoped<IGenericRepository<Mascota>, MascotaRepository>();
 
+builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
+builder.Services.AddScoped<IEspecieService, EspecieService>();
+
+builder.Services.AddScoped<IRazaRepository, RazaRepository>();
+builder.Services.AddScoped<IRazaService, RazaService>();
+
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
@@ -126,13 +132,16 @@ builder.Services.AddSwaggerGen(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
+//if (app.Environment.IsDevelopment())
+//{
     app.UseSwagger();
     app.UseSwaggerUI();
-}
+//}
+
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 
