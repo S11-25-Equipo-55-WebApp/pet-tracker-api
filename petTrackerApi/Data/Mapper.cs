@@ -87,7 +87,9 @@ namespace petTrackerApi.Data
                 EspecieId = mascota.EspecieId,
                 RazaId = mascota.RazaId,
                 FotoMascota = mascota.FotoMascota,
-                UsuarioId = mascota.UsuarioId
+                UsuarioId = mascota.UsuarioId,
+                CreadoAt = mascota.CreadoAt,
+                EditadoAt = mascota.EditadoAt,
             };
         }
 
@@ -111,7 +113,6 @@ namespace petTrackerApi.Data
         {
             return new Mascota
             {
-                MascotaId = dtoMascota.MascotaId,
                 Nombre = dtoMascota.Nombre,
                 FechaNacimiento = dtoMascota.FechaNacimiento,
                 EspecieId = dtoMascota.EspecieId,

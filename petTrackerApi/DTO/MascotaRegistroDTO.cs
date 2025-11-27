@@ -2,8 +2,6 @@
 {
     public class MascotaRegistroDTO
     {
-        public int MascotaId { get; set; }
-
         public string Nombre { get; set; } = null!;
 
         public DateOnly? FechaNacimiento { get; set; }

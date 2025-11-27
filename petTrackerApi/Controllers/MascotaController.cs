@@ -51,8 +51,12 @@ namespace petTrackerApi.Controllers
 
         // PUT api/<MascotaController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult<MascotaDTO>> Update(int id, [FromBody] MascotaDTO dtoMascota)
         {
+            var actualizado = await _service.Update(id, dtoMascota);
+            if (actualizado == null) return NotFound();
+
+            return Ok(actualizado);
         }
 
         // DELETE api/<MascotaController>/5

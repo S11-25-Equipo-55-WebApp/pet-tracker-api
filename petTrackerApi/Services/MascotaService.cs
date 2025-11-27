@@ -45,6 +45,7 @@ namespace petTrackerApi.Services
             if (mascotaDB == null) return null;
 
             mascotaDB.Nombre = dtoMascota.Nombre;
+            mascotaDB.Codigo = CodeGenerator.GenerarCodigo(dtoMascota.Nombre, dtoMascota.CreadoAt);
             mascotaDB.FechaNacimiento = dtoMascota.FechaNacimiento;
             mascotaDB.EspecieId = dtoMascota.EspecieId;
             mascotaDB.RazaId = dtoMascota.RazaId;
