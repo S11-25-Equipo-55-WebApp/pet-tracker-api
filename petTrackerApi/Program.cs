@@ -6,12 +6,29 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
+using petTrackerApi.Repository.GenericRepository;
+using petTrackerApi.DTO;
+using petTrackerApi.Model;
+using petTrackerApi.Services.GenericServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+
+//Services
+builder.Services.AddScoped<MascotaService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IEspecieService, EspecieService>();
+builder.Services.AddScoped<IRazaService, RazaService>();
+builder.Services.AddScoped<IGenericService<MascotaDTO>, MascotaService>();
+
+
+//Repository
+builder.Services.AddScoped<MascotaRepository>();
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
+builder.Services.AddScoped<IRazaRepository, RazaRepository>();
+builder.Services.AddScoped<IGenericRepository<Mascota>, MascotaRepository>();
 
 builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
 builder.Services.AddScoped<IEspecieService, EspecieService>();

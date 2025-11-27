@@ -23,8 +23,6 @@ namespace petTrackerApi.Data
 
         public virtual DbSet<ExamenMedico> ExamenMedicos { get; set; }
 
-        public virtual DbSet<FotoMascota> FotoMascota { get; set; }
-
         public virtual DbSet<Mascota> Mascota { get; set; }
 
         public virtual DbSet<Medicacion> Medicaciones { get; set; }
@@ -52,24 +50,6 @@ namespace petTrackerApi.Data
         public virtual DbSet<Usuario> Usuarios { get; set; }
 
         public virtual DbSet<Vacuna> Vacunas { get; set; }
-
-        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
-        {
-            foreach (var entry in ChangeTracker.Entries<Usuario>())
-            {
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Entity.CreadoAt = DateTime.Now;
-                    entry.Entity.EditadoAt = DateTime.Now;
-                }
-                else if (entry.State == EntityState.Modified)
-                {
-                    entry.Entity.EditadoAt = DateTime.Now;
-                }
-            }
-
-            return await base.SaveChangesAsync(cancellationToken);
-        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -334,26 +314,6 @@ namespace petTrackerApi.Data
                     .HasConstraintName("FK_ExamenMedico_TipoExamen");
             });
 
-            modelBuilder.Entity<FotoMascota>(entity =>
-            {
-                entity.HasKey(e => e.FotoMascotaId);
-
-                entity.Property(e => e.FotoMascotaId).HasColumnName("fotoMascotaId");
-                entity.Property(e => e.Codigo)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("codigo");
-                entity.Property(e => e.Descripcion)
-                    .HasColumnType("text")
-                    .HasColumnName("descripcion");
-                entity.Property(e => e.FotoUrl)
-                    .IsUnicode(false)
-                    .HasColumnName("fotoUrl");
-                entity.Property(e => e.SubidaAt)
-                    .HasColumnType("datetime")
-                    .HasColumnName("subidaAt");
-            });
-
             modelBuilder.Entity<Mascota>(entity =>
             {
                 entity.HasKey(e => e.MascotaId);
@@ -371,7 +331,7 @@ namespace petTrackerApi.Data
                     .HasColumnName("editadoAt");
                 entity.Property(e => e.EspecieId).HasColumnName("especieId");
                 entity.Property(e => e.FechaNacimiento).HasColumnName("fechaNacimiento");
-                entity.Property(e => e.FotoMascotaId).HasColumnName("fotoMascotaId");
+                entity.Property(e => e.FotoMascota).HasMaxLength(200).HasColumnName("fotoMascota");
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(50)
                     .IsUnicode(false)
@@ -383,11 +343,6 @@ namespace petTrackerApi.Data
                     .HasForeignKey(d => d.EspecieId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Mascota_Especie");
-
-                entity.HasOne(d => d.FotoMascota).WithMany(p => p.Mascota)
-                    .HasForeignKey(d => d.FotoMascotaId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Mascota_FotoMascota");
 
                 entity.HasOne(d => d.Raza).WithMany(p => p.Mascota)
                     .HasForeignKey(d => d.RazaId)

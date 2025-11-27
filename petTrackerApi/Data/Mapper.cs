@@ -76,29 +76,38 @@ namespace petTrackerApi.Data
                 Nombre = dtoRaza.Nombre
             };
         }
-    }
-        //public class Mapper
-        //{
-        //    public static UsuarioDTO UsuarioMapToDTO(Usuario usuario)
-        //    {
-        //        return new UsuarioDTO
-        //        {
-        //            UsuarioId = usuario.UsuarioId,
-        //            Email = usuario.Email,
-        //            Nombre = usuario.Nombre,
-        //            UserName = usuario.UserName,
-        //        };
-        //    }
-        //    public static Usuario UsuarioDTOMapToEntity(UsuarioDTO usuario)
-        //    {
-        //        return new Usuario
-        //        {
-        //            UsuarioId = usuario.UsuarioId,
-        //            Email = usuario.Email,
-        //            Nombre = usuario.Nombre,
-        //            UserName = usuario.UserName,
+        public static MascotaDTO MascotaMapToDTO(Mascota mascota)
+        {
+            return new MascotaDTO
+            {
+                MascotaId = mascota.MascotaId,
+                Nombre = mascota.Nombre,
+                Codigo = mascota.Codigo,
+                FechaNacimiento = mascota.FechaNacimiento,
+                EspecieId = mascota.EspecieId,
+                RazaId = mascota.RazaId,
+                FotoMascota = mascota.FotoMascota,
+                UsuarioId = mascota.UsuarioId,
+                CreadoAt = mascota.CreadoAt,
+                EditadoAt = mascota.EditadoAt,
+            };
+        }
 
-        //        };
-        //    }
-        //}
+        public static Mascota MascotaDTOMapToEntity(MascotaDTO dtoMascota)
+        {
+            return new Mascota
+            {
+                MascotaId = dtoMascota.MascotaId,
+                Nombre = dtoMascota.Nombre,
+                Codigo = dtoMascota.Codigo,
+                FechaNacimiento = dtoMascota.FechaNacimiento,
+                EspecieId = dtoMascota.EspecieId,
+                RazaId = dtoMascota.RazaId,
+                FotoMascota = dtoMascota.FotoMascota,
+                UsuarioId = dtoMascota.UsuarioId,
+                CreadoAt = dtoMascota.CreadoAt,
+                EditadoAt = dtoMascota.EditadoAt
+            };
+        }
     }
+}
