@@ -58,13 +58,21 @@ namespace petTrackerApi.Services
             if (dto.Password.Length > 10)
                 throw new ArgumentException("La solicitud debe ser rechazada inmediatamente porque el límite de longitud del campo ha sido excedido.");
 
+            if(dto.UserName.Length > 30 || dto.UserName.Length < 3)
+                throw new ArgumentException("La solicitud debe ser rechazada inmediatamente porque no cumple con de longitud del campo, no debe tener menos de 3, ni mas de 30 caracteres.");
+
+            if (dto.Nombre.Length > 50 || dto.Nombre.Length < 3)
+                throw new ArgumentException("La solicitud debe ser rechazada inmediatamente porque no cumple con de longitud del campo, no debe tener menos de 3, ni mas de 50 caracteres.");
+
             //Validación de user name, nombre único y el email
             if (!_repo.IsUniqueUsuario(dto.UserName))
-                throw new ArgumentException ("Nombre de usuario ya existe.");
+                throw new ArgumentException ("Nombre del userName ya existe.");
 
-            if (string.IsNullOrWhiteSpace(dto.Email))
-                throw new ArgumentException("El campo 'email' es obligatorio y está ausente en la solicitud.");
-           
+            if (!_repo.IsUniqueEmail(dto.Email))
+                throw new ArgumentException("Ya existe un usuario con esa cuenta de email.");
+
+            if (!_repo.IsUniqueNombre(dto.Nombre))
+                throw new ArgumentException("Ya existe un usuario con ese nombre");           
 
             //Mapeo DTO → Entity
             var entity = Mapper.UsuarioRegistroDTOToEntity(dto);
