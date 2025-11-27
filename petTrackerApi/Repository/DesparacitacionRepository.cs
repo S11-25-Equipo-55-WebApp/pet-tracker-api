@@ -29,7 +29,7 @@ namespace petTrackerApi.Repository
             await _db.SaveChangesAsync();
             return desparacitacion;
         }
-        public async Task<Desparacitacion> Update(int id, Desparacitacion desparacitacion)
+        public async Task<Desparacitacion> Update(Desparacitacion desparacitacion)
         {
             _db.Entry(desparacitacion).State = EntityState.Modified;
             await _db.SaveChangesAsync();

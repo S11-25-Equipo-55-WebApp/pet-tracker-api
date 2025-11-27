@@ -55,9 +55,7 @@ namespace petTrackerApi.Services
             mascotaDB.FotoMascota = dtoMascota.FotoMascota;
             mascotaDB.EditadoAt = DateTime.Now;
 
-            var entity = Mapper.MascotaDTOMapToEntity(dtoMascota);
-
-            var actualizado = await _repository.Update(id, entity);
+            var actualizado = await _repository.Update(mascotaDB);
             return actualizado == null ? null : Mapper.MascotaMapToDTO(actualizado);
         }
         public async Task<MascotaDTO> Delete(int id)
