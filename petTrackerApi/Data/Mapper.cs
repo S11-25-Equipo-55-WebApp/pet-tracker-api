@@ -109,41 +109,5 @@ namespace petTrackerApi.Data
                 EditadoAt = dtoMascota.EditadoAt
             };
         }
-        public static Mascota MascotaRegistroDTOToEntity(MascotaRegistroDTO dtoMascota)
-        {
-            return new Mascota
-            {
-                Nombre = dtoMascota.Nombre,
-                FechaNacimiento = dtoMascota.FechaNacimiento,
-                EspecieId = dtoMascota.EspecieId,
-                RazaId = dtoMascota.RazaId,
-                FotoMascota = dtoMascota.FotoMascota,
-                UsuarioId = dtoMascota.UsuarioId
-            };
-        }
     }
-        //public class Mapper
-        //{
-        //    public static UsuarioDTO UsuarioMapToDTO(Usuario usuario)
-        //    {
-        //        return new UsuarioDTO
-        //        {
-        //            UsuarioId = usuario.UsuarioId,
-        //            Email = usuario.Email,
-        //            Nombre = usuario.Nombre,
-        //            UserName = usuario.UserName,
-        //        };
-        //    }
-        //    public static Usuario UsuarioDTOMapToEntity(UsuarioDTO usuario)
-        //    {
-        //        return new Usuario
-        //        {
-        //            UsuarioId = usuario.UsuarioId,
-        //            Email = usuario.Email,
-        //            Nombre = usuario.Nombre,
-        //            UserName = usuario.UserName,
-
-        //        };
-        //    }
-        //}
-    }
+}

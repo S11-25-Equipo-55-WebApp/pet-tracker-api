@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using petTrackerApi.DTO;
+using petTrackerApi.Repository;
 using petTrackerApi.Services;
 using petTrackerApi.Services.GenericServices;
 using System.Threading.Tasks;
@@ -13,9 +14,11 @@ namespace petTrackerApi.Controllers
     public class MascotaController : ControllerBase
     {
         private IGenericService<MascotaDTO> _service;
-        public MascotaController(IGenericService<MascotaDTO> services)
+        private readonly MascotaService _serviceMascota;
+        public MascotaController(IGenericService<MascotaDTO> services, MascotaService servicioMascota)
         {
             _service = services;
+            _serviceMascota = servicioMascota;
         }
 
         // GET: api/<MascotaController>
@@ -65,6 +68,13 @@ namespace petTrackerApi.Controllers
         {
             var ok = await _service.Delete(id);
             return NoContent();
+        }
+
+
+        [HttpGet("get-mascota-by-user")]
+        public async Task<IEnumerable<MascotaDTO>> GetMascotasByUser(int id)
+        {
+            return await _serviceMascota.GetMascotaByIdUsuario(id);
         }
     }
 }

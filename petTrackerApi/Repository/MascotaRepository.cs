@@ -43,5 +43,10 @@ namespace petTrackerApi.Repository
             await _db.SaveChangesAsync();
             return mascota;
         }
+
+        public async Task<IEnumerable<Mascota>> GetByIdUsuario(int id)
+        {
+            return await _db.Mascota.Where(x => x.UsuarioId == id).ToListAsync();
+        }
     }
 }

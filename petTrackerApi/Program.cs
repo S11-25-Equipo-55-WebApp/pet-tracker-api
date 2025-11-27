@@ -16,6 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 //Services
+builder.Services.AddScoped<MascotaService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IEspecieService, EspecieService>();
 builder.Services.AddScoped<IRazaService, RazaService>();
@@ -23,6 +24,7 @@ builder.Services.AddScoped<IGenericService<MascotaDTO>, MascotaService>();
 
 
 //Repository
+builder.Services.AddScoped<MascotaRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
 builder.Services.AddScoped<IRazaRepository, RazaRepository>();
