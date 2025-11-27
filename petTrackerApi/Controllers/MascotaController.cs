@@ -61,8 +61,10 @@ namespace petTrackerApi.Controllers
 
         // DELETE api/<MascotaController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
+            var ok = await _service.Delete(id);
+            return NoContent();
         }
     }
 }
