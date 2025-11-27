@@ -12,6 +12,8 @@ namespace petTrackerApi.Repository
         Task<Usuario> Update(int id, Usuario usuario);
         Task<Usuario> Delete(int id);
         bool IsUniqueUsuario(string username);
+        bool IsUniqueEmail(string mail);
+        bool IsUniqueNombre(string nombre);
         Task<Usuario> GetByIdEntity(int id);
         Task UpdatePassword(Usuario usuario);
 
