@@ -17,14 +17,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 //Services
 builder.Services.AddScoped<MascotaService>();
+builder.Services.AddScoped<DesparacitacionService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IEspecieService, EspecieService>();
 builder.Services.AddScoped<IRazaService, RazaService>();
 builder.Services.AddScoped<IGenericService<MascotaDTO>, MascotaService>();
+builder.Services.AddScoped<IGenericService<DesparacitacionDTO>, DesparacitacionService>();
 
 
 //Repository
 builder.Services.AddScoped<MascotaRepository>();
+builder.Services.AddScoped<DesparacitacionRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
 builder.Services.AddScoped<IRazaRepository, RazaRepository>();
@@ -35,6 +38,7 @@ builder.Services.AddScoped<IEspecieService, EspecieService>();
 
 builder.Services.AddScoped<IRazaRepository, RazaRepository>();
 builder.Services.AddScoped<IRazaService, RazaService>();
+builder.Services.AddScoped<IGenericRepository<Desparacitacion>, DesparacitacionRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

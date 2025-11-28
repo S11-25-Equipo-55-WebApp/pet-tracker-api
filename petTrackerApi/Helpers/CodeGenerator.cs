@@ -12,11 +12,11 @@
 
             return $"{textoLimpio}_{fechaFormateada}";
         }
-        public static string GenerarCodigo(int? idBase, int? IdBase2, DateTime fecha)
+        public static string GenerarCodigo(int? idBase, DateTime fecha)
         {
             string fechaFormateada = fecha.ToString("ddMMyy");
 
-            return $"{idBase}_{fechaFormateada}_{IdBase2}";
+            return $"{idBase}_{fechaFormateada}";
         }
     }
 }

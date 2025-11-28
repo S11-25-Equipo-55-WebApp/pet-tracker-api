@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using petTrackerApi.DTO;
+using petTrackerApi.Services;
+using petTrackerApi.Services.GenericServices;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -8,36 +11,67 @@ namespace petTrackerApi.Controllers
     [ApiController]
     public class DesparacitacionController : ControllerBase
     {
-        // GET: api/<DesparacitacionController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private IGenericService<DesparacitacionDTO> _service;
+        private readonly DesparacitacionService _serviceDesparacitacion;
+        public DesparacitacionController(IGenericService<DesparacitacionDTO> services, DesparacitacionService servicioDesparacitacion)
         {
-            return new string[] { "value1", "value2" };
+            _service = services;
+            _serviceDesparacitacion = servicioDesparacitacion;
+        }
+            // GET: api/<DesparacitacionController>
+            [HttpGet]
+        public async Task<IEnumerable<DesparacitacionDTO>> Get()
+        {
+            return await _service.Get();
         }
 
         // GET api/<DesparacitacionController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<DesparacitacionDTO>> GetById(int id)
         {
-            return "value";
+            var result = await _service.GetById(id);
+            if (result == null) return NotFound();
+            return Ok(result);
         }
 
         // POST api/<DesparacitacionController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<IActionResult> CrearDesparacitacion([FromBody] DesparacitacionDTO dtoDesparacitacion)
         {
+            try
+            {
+                var desparacitacionCreada = await _service.Create(dtoDesparacitacion);
+                return CreatedAtAction(nameof(GetById), new { id = desparacitacionCreada.DesparacitacionId }, desparacitacionCreada);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         // PUT api/<DesparacitacionController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult<MascotaDTO>> Update(int id, [FromBody] DesparacitacionDTO dtoDesparacitacion)
         {
+            var actualizado = await _service.Update(id, dtoDesparacitacion);
+            if (actualizado == null) return NotFound();
+
+            return Ok(actualizado);
         }
 
         // DELETE api/<DesparacitacionController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
+            var ok = await _service.Delete(id);
+            return NoContent();
         }
+
+        [HttpGet("get-desparacitacion-por-mascota")]
+        public async Task<IEnumerable<DesparacitacionDTO>> GetDesparacitacionesByIdMascota(int id)
+        {
+            return await _serviceDesparacitacion.GetDesparacitacionesByIdMascota(id);
+        }
+
     }
 }

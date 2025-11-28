@@ -32,7 +32,7 @@ namespace petTrackerApi.Services
         }
         public async Task<DesparacitacionDTO> Create(DesparacitacionDTO dtoDesparacitacion)
         {
-            dtoDesparacitacion.Codigo = CodeGenerator.GenerarCodigo(dtoDesparacitacion.MascotaId, dtoDesparacitacion.DesparacitacionId, dtoDesparacitacion.CreadoAt);
+            dtoDesparacitacion.Codigo = CodeGenerator.GenerarCodigo(dtoDesparacitacion.MascotaId, dtoDesparacitacion.CreadoAt);
             dtoDesparacitacion.CreadoAt = DateTime.Now;
             dtoDesparacitacion.EditadoAt = DateTime.Now;
 
@@ -45,7 +45,7 @@ namespace petTrackerApi.Services
             var desparacitacionBD = await _repository.GetById(id);
             if (desparacitacionBD == null) return null;
 
-            desparacitacionBD.Codigo = CodeGenerator.GenerarCodigo(desparacitacionBD.MascotaId, desparacitacionBD.DesparacitacionId, desparacitacionBD.CreadoAt);
+            desparacitacionBD.Codigo = CodeGenerator.GenerarCodigo(desparacitacionBD.MascotaId, desparacitacionBD.CreadoAt);
             desparacitacionBD.FechaAplicacion = dtoDesparacitacion.FechaAplicacion;
             desparacitacionBD.FechaProxima = dtoDesparacitacion.FechaProxima;
             desparacitacionBD.Notas = dtoDesparacitacion.Notas;
