@@ -32,8 +32,9 @@ namespace petTrackerApi.Repository
             return mascota;
         }
 
-        public async Task<Mascota> Update(int id, Mascota mascota)
+        public async Task<Mascota> Update(Mascota mascota)
         {
+            _db.Entry(mascota).State = EntityState.Modified;
             await _db.SaveChangesAsync();
             return mascota;
         }
