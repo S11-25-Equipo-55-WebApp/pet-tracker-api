@@ -18,9 +18,5 @@ namespace petTrackerApi.DTO
         public string FotoMascota { get; set; }
 
         public int UsuarioId { get; set; }
-
-        public DateTime CreadoAt { get; set; } 
-
-        public DateTime EditadoAt { get; set; }
     }
 }

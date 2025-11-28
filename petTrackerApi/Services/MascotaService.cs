@@ -33,13 +33,14 @@ namespace petTrackerApi.Services
         }
         public async Task<MascotaDTO> Create(MascotaDTO dtoMascota)
         {
-            dtoMascota.Codigo = CodeGenerator.GenerarCodigo(dtoMascota.Nombre, dtoMascota.CreadoAt);
-            dtoMascota.CreadoAt = DateTime.Now;
-            dtoMascota.EditadoAt = DateTime.Now;
-
             var mapMascota = Mapper.MascotaDTOMapToEntity(dtoMascota);
+            mapMascota.CreadoAt = DateTime.Now;
+            mapMascota.EditadoAt = DateTime.Now;
+            mapMascota.Codigo = CodeGenerator.GenerarCodigo(mapMascota.Nombre, mapMascota.CreadoAt, mapMascota.UsuarioId);
+
             var mascotaCreada = await _repository.Create(mapMascota);
-            return dtoMascota;
+            var mascotaResult = Mapper.MascotaMapToDTO(mascotaCreada);
+            return mascotaResult;
         }
 
         public async Task<MascotaDTO> Update(int id, MascotaDTO dtoMascota)
@@ -48,7 +49,7 @@ namespace petTrackerApi.Services
             if (mascotaDB == null) return null;
 
             mascotaDB.Nombre = dtoMascota.Nombre;
-            mascotaDB.Codigo = CodeGenerator.GenerarCodigo(dtoMascota.Nombre, dtoMascota.CreadoAt);
+            mascotaDB.Codigo = CodeGenerator.GenerarCodigo(dtoMascota.Nombre, mascotaDB.CreadoAt, mascotaDB.UsuarioId);
             mascotaDB.FechaNacimiento = dtoMascota.FechaNacimiento;
             mascotaDB.EspecieId = dtoMascota.EspecieId;
             mascotaDB.RazaId = dtoMascota.RazaId;
