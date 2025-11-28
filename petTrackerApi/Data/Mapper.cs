@@ -93,9 +93,7 @@ namespace petTrackerApi.Data
                 EspecieId = mascota.EspecieId,
                 RazaId = mascota.RazaId,
                 FotoMascota = mascota.FotoMascota,
-                UsuarioId = mascota.UsuarioId,
-                CreadoAt = mascota.CreadoAt,
-                EditadoAt = mascota.EditadoAt,
+                UsuarioId = mascota.UsuarioId
             };
         }
 
@@ -110,9 +108,20 @@ namespace petTrackerApi.Data
                 EspecieId = dtoMascota.EspecieId,
                 RazaId = dtoMascota.RazaId,
                 FotoMascota = dtoMascota.FotoMascota,
-                UsuarioId = dtoMascota.UsuarioId,
-                CreadoAt = dtoMascota.CreadoAt,
-                EditadoAt = dtoMascota.EditadoAt
+                UsuarioId = dtoMascota.UsuarioId
+            };
+        }
+        public static Mascota MascotaRegistroDTOMapToEntity(MascotaDTO dtoMascota)
+        {
+            return new Mascota
+            {
+                MascotaId = dtoMascota.MascotaId,
+                Nombre = dtoMascota.Nombre,
+                FechaNacimiento = dtoMascota.FechaNacimiento,
+                EspecieId = dtoMascota.EspecieId,
+                RazaId = dtoMascota.RazaId,
+                FotoMascota = dtoMascota.FotoMascota,
+                UsuarioId = dtoMascota.UsuarioId
             };
         }
         public static DesparacitacionDTO DesparacitacionMapToDTO(Desparacitacion desparacitacion)
