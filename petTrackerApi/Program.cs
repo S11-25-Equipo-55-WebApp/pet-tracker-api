@@ -145,6 +145,8 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+app.UseCors("_origenLocalHost");
+
 app.UseAuthentication();
 
 app.UseAuthorization();
