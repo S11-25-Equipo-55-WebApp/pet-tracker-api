@@ -43,5 +43,10 @@ namespace petTrackerApi.Repository
             return desparacitacion;
         }
 
+        public async Task<IEnumerable<Desparacitacion>> GetDesparacitacionesByIdMascota(int id)
+        {
+            return await _db.Desparacitaciones.Where(x => x.MascotaId == id).ToListAsync();
+        }
+
     }
 }

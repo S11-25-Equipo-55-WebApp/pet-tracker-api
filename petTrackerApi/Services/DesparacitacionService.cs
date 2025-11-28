@@ -64,5 +64,11 @@ namespace petTrackerApi.Services
             await _repository.Delete(desparacitacionEncontrada);
             return Mapper.DesparacitacionMapToDTO(desparacitacionEncontrada);
         }
+
+        public async Task<IEnumerable<DesparacitacionDTO>> GetDesparacitacionesByIdMascota(int id)
+        {
+            var listado = await _repDesparacitacion.GetDesparacitacionesByIdMascota(id);
+            return listado.Select(Mapper.DesparacitacionMapToDTO);
+        }
     }
 }
