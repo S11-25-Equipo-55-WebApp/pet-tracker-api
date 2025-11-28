@@ -75,11 +75,11 @@ namespace petTrackerApi.Services
                 throw new ArgumentException("Ya existe un usuario con ese nombre");
 
             //Creado y editado fechas
-            dto.CreadoAt = DateTime.Now;
-            dto.EditadoAt = DateTime.Now;
 
             //Mapeo DTO → Entity
             var entity = Mapper.UsuarioRegistroDTOToEntity(dto);
+            entity.CreadoAt = DateTime.Now;
+            entity.EditadoAt = DateTime.Now;
 
             // Hash del password en el entity correcto
             var hasher = new PasswordHasher<Usuario>();
@@ -96,8 +96,8 @@ namespace petTrackerApi.Services
 
         public async Task<UsuarioDTO> Update(int id, UsuarioDTO dto)
         {
-            dto.EditadoAt = DateTime.Now;
             var entity = Mapper.UsuarioDTOMapToEntity(dto);
+            entity.EditadoAt = DateTime.Now;
 
             var actualizado = await _repo.Update(id, entity);
             return actualizado == null ? null : Mapper.UsuarioMapToDTO(actualizado);
