@@ -33,7 +33,6 @@ namespace petTrackerApi.Controllers
             return Ok(result);
         }
 
-        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CrearUsuario([FromBody] UsuarioRegistroDTO dto)
         {
