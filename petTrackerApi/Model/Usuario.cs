@@ -21,7 +21,7 @@ public partial class Usuario
 
     public DateTime CreadoAt { get; set; }
 
-    public DateTime EditadoAt { get; set; }
+    public DateTime? EditadoAt { get; set; }
 
     public virtual ICollection<Calendario> Calendarios { get; set; } = new List<Calendario>();
 

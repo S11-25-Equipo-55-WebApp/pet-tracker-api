@@ -11,6 +11,6 @@ namespace petTrackerApi.DTO
         public string Email { get; set; }
         public string? Telefono { get; set; }
         public DateTime CreadoAt { get; set; }
-        public DateTime EditadoAt { get; set; }
+        public DateTime? EditadoAt { get; set; }
     }
 }

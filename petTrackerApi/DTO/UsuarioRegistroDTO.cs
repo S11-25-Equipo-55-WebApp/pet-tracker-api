@@ -8,7 +8,7 @@
 
         public string Nombre { get; set; }
 
-        public string Apellido { get; set; }
+        public string? Apellido { get; set; }
 
         public string Email { get; set; }
 
@@ -17,6 +17,6 @@
         public string? Telefono { get; set; }
         public DateTime CreadoAt { get; set; }
 
-        public DateTime EditadoAt { get; set; }
+        public DateTime? EditadoAt { get; set; }
     }
 }
