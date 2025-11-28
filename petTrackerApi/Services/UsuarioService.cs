@@ -72,7 +72,11 @@ namespace petTrackerApi.Services
                 throw new ArgumentException("Ya existe un usuario con esa cuenta de email.");
 
             if (!_repo.IsUniqueNombre(dto.Nombre))
-                throw new ArgumentException("Ya existe un usuario con ese nombre");           
+                throw new ArgumentException("Ya existe un usuario con ese nombre");
+
+            //Creado y editado fechas
+            dto.CreadoAt = DateTime.Now;
+            dto.EditadoAt = DateTime.Now;
 
             //Mapeo DTO → Entity
             var entity = Mapper.UsuarioRegistroDTOToEntity(dto);
@@ -92,6 +96,7 @@ namespace petTrackerApi.Services
 
         public async Task<UsuarioDTO> Update(int id, UsuarioDTO dto)
         {
+            dto.EditadoAt = DateTime.Now;
             var entity = Mapper.UsuarioDTOMapToEntity(dto);
 
             var actualizado = await _repo.Update(id, entity);

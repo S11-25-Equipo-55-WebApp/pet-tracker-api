@@ -12,7 +12,11 @@ namespace petTrackerApi.Data
                 UsuarioId = u.UsuarioId,
                 UserName = u.Username,
                 Email = u.Email,
-                Nombre = u.Nombre
+                Nombre = u.Nombre,
+                Apellido = u.Apellido,
+                Telefono = u.Telefono,
+                CreadoAt = u.CreadoAt,
+                EditadoAt = u.EditadoAt
             };
         }
 
@@ -23,7 +27,11 @@ namespace petTrackerApi.Data
                 UsuarioId = dto.UsuarioId,
                 Username = dto.UserName,
                 Email = dto.Email,
-                Nombre = dto.Nombre
+                Nombre = dto.Nombre,
+                Apellido = dto.Apellido,
+                Telefono = dto.Telefono,
+                CreadoAt = dto.CreadoAt,
+                EditadoAt = dto.EditadoAt
             };
         }
 
@@ -34,7 +42,11 @@ namespace petTrackerApi.Data
                 Username = dto.UserName,
                 Email = dto.Email,
                 Nombre = dto.Nombre,
-                Password = dto.Password
+                Password = dto.Password,
+                Apellido = dto.Apellido,
+                Telefono = dto.Telefono,
+                CreadoAt = dto.CreadoAt,
+                EditadoAt = dto.EditadoAt
             };
         }
 
