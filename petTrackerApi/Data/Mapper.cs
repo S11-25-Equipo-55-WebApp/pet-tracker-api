@@ -14,9 +14,7 @@ namespace petTrackerApi.Data
                 Email = u.Email,
                 Nombre = u.Nombre,
                 Apellido = u.Apellido,
-                Telefono = u.Telefono,
-                CreadoAt = u.CreadoAt,
-                EditadoAt = u.EditadoAt
+                Telefono = u.Telefono
             };
         }
 
@@ -29,9 +27,7 @@ namespace petTrackerApi.Data
                 Email = dto.Email,
                 Nombre = dto.Nombre,
                 Apellido = dto.Apellido,
-                Telefono = dto.Telefono,
-                CreadoAt = dto.CreadoAt,
-                EditadoAt = dto.EditadoAt
+                Telefono = dto.Telefono
             };
         }
 
@@ -44,9 +40,7 @@ namespace petTrackerApi.Data
                 Nombre = dto.Nombre,
                 Password = dto.Password,
                 Apellido = dto.Apellido,
-                Telefono = dto.Telefono,
-                CreadoAt = dto.CreadoAt,
-                EditadoAt = dto.EditadoAt
+                Telefono = dto.Telefono
             };
         }
 
