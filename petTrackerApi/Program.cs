@@ -10,6 +10,8 @@ using petTrackerApi.Repository.GenericRepository;
 using petTrackerApi.DTO;
 using petTrackerApi.Model;
 using petTrackerApi.Services.GenericServices;
+using petTrackerApi.Repository.IRepository;
+using petTrackerApi.Services.IServices;
 
 var builder = WebApplication.CreateBuilder(args);
 

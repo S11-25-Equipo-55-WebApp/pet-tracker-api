@@ -1,6 +1,6 @@
 ﻿using petTrackerApi.Model;
 
-namespace petTrackerApi.Repository
+namespace petTrackerApi.Repository.IRepository
 {
     public interface IRazaRepository
     {

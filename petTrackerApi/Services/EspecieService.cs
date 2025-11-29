@@ -1,6 +1,7 @@
 ﻿using petTrackerApi.Data;
 using petTrackerApi.DTO;
-using petTrackerApi.Repository;
+using petTrackerApi.Repository.IRepository;
+using petTrackerApi.Services.IServices;
 
 namespace petTrackerApi.Services
 {

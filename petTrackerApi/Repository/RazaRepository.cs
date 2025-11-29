@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using petTrackerApi.Data;
 using petTrackerApi.Model;
+using petTrackerApi.Repository.IRepository;
 
 namespace petTrackerApi.Repository
 {

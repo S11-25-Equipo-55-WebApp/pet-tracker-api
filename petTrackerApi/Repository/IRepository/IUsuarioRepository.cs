@@ -1,7 +1,7 @@
 ﻿using petTrackerApi.DTO;
 using petTrackerApi.Model;
 
-namespace petTrackerApi.Repository
+namespace petTrackerApi.Repository.IRepository
 {
     public interface IUsuarioRepository
     {
