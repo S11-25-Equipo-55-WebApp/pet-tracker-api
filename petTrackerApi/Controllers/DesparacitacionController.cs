@@ -66,7 +66,7 @@ namespace petTrackerApi.Controllers
             return NoContent();
         }
 
-        [HttpGet("get-desparacitacion-por-mascota")]
+        [HttpGet("obtener-desparacitacion-por-mascota")]
         public async Task<IEnumerable<DesparacitacionDTO>> GetDesparacitacionesByIdMascota(int id)
         {
             return await _service.GetDesparacitacionesByIdMascota(id);

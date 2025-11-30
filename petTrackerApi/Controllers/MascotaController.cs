@@ -70,7 +70,7 @@ namespace petTrackerApi.Controllers
         }
 
 
-        [HttpGet("get-mascota-por-usuario")]
+        [HttpGet("obtener-mascota-por-usuario")]
         public async Task<IEnumerable<MascotaDTO>> GetMascotasByUser(int id)
         {
             return await _service.GetMascotasByIdUsuario(id);

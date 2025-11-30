@@ -21,6 +21,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IMascotaService, MascotaService>();
+builder.Services.AddScoped<IVacunaService, VacunaService>();
 builder.Services.AddScoped<IDesparacitacionService, DesparacitacionService>();
 builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<TipoDesparacitacionDTO>, TipoDesparacitacionService>();
@@ -33,6 +34,7 @@ builder.Services.AddScoped<IGenericService<EspecieDTO>, EspecieService>();
 
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IMascotaRepository, MascotaRepository>();
+builder.Services.AddScoped<IVacunaRepository, VacunaRepository>();
 builder.Services.AddScoped<IDesparacitacionRepository, DesparacitacionRepository>();
 builder.Services.AddScoped<IGenericRepository<Especie>, EspecieRepository>();
 builder.Services.AddScoped<IGenericRepository<Raza>, RazaRepository>();
