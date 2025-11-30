@@ -12,11 +12,9 @@ namespace petTrackerApi.Controllers
     public class TipoDesparacitacionController : ControllerBase
     {
         private IGenericService<TipoDesparacitacionDTO> _service;
-        private readonly TipoDesparacitacionService _serviceTipoDesparacitacion;
-        public TipoDesparacitacionController(IGenericService<TipoDesparacitacionDTO> services, TipoDesparacitacionService servicioTipoDesparacitacion)
+        public TipoDesparacitacionController(IGenericService<TipoDesparacitacionDTO> services)
         {
             _service = services;
-            _serviceTipoDesparacitacion = servicioTipoDesparacitacion;
         }
         // GET: api/<TipoDesparacitacionController>
         [HttpGet]
