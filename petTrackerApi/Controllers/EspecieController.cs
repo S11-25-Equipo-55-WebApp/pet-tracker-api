@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using petTrackerApi.DTO;
+using petTrackerApi.Services;
+using petTrackerApi.Services.GenericServices;
 using petTrackerApi.Services.IServices;
 using System.Threading.Tasks;
 
@@ -11,13 +13,11 @@ namespace petTrackerApi.Controllers
     [ApiController]
     public class EspecieController : ControllerBase
     {
-        private readonly IEspecieService _service;
-
-        public EspecieController(IEspecieService service)
+        private IGenericService<EspecieDTO> _service;
+        public EspecieController(IGenericService<EspecieDTO> services)
         {
-            _service = service;
+            _service = services;
         }
-
         // GET: api/<EspecieController>
         [HttpGet]
         public async Task<IEnumerable<EspecieDTO>> Get()

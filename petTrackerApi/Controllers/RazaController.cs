@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using petTrackerApi.DTO;
+using petTrackerApi.Services;
+using petTrackerApi.Services.GenericServices;
 using petTrackerApi.Services.IServices;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -10,11 +12,10 @@ namespace petTrackerApi.Controllers
     [ApiController]
     public class RazaController : ControllerBase
     {
-        private readonly IRazaService _service;
-
-        public RazaController(IRazaService service)
+        private IGenericService<RazaDTO> _service;
+        public RazaController(IGenericService<RazaDTO> services)
         {
-            _service = service;
+            _service = services;
         }
         // GET: api/<RazaController>
         [HttpGet]

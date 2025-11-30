@@ -1,11 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using petTrackerApi.Data;
 using petTrackerApi.Model;
+using petTrackerApi.Repository.GenericRepository;
 using petTrackerApi.Repository.IRepository;
 
 namespace petTrackerApi.Repository
 {
-    public class EspecieRepository : IEspecieRepository
+    public class EspecieRepository : IGenericRepository<Especie>
     {
         private readonly DBContext _db;
 
@@ -13,8 +14,6 @@ namespace petTrackerApi.Repository
         {
             _db = db;
         }
-
-
         public async Task<IEnumerable<Especie>> Get()
         {
             return await _db.Especies.ToListAsync();
@@ -25,16 +24,16 @@ namespace petTrackerApi.Repository
             return await _db.Especies.FindAsync(id);
         }
 
-        public Task<Especie> Registro(Especie especie)
+        public Task<Especie> Create(Especie entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Especie> Update(int id, Especie especie)
+        public Task<Especie> Update(Especie entity)
         {
             throw new NotImplementedException();
         }
-        public Task<Especie> Delete(int id)
+        public Task<Especie> Delete(Especie entity)
         {
             throw new NotImplementedException();
         }

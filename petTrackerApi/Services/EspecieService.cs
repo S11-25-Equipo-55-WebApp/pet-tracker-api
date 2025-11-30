@@ -1,22 +1,21 @@
 ﻿using petTrackerApi.Data;
 using petTrackerApi.DTO;
+using petTrackerApi.Model;
+using petTrackerApi.Repository.GenericRepository;
 using petTrackerApi.Repository.IRepository;
+using petTrackerApi.Services.GenericServices;
 using petTrackerApi.Services.IServices;
 
 namespace petTrackerApi.Services
 {
-    public class EspecieService : IEspecieService
+    public class EspecieService : IGenericService<EspecieDTO>
     {
-        private readonly IEspecieRepository _repo;
-        private readonly IConfiguration _config;
+        private readonly IGenericRepository<Especie> _repo;
 
-        public EspecieService(IEspecieRepository repo, IConfiguration config)
+        public EspecieService(IGenericRepository<Especie> repo)
         {
             _repo = repo;
-            _config = config;
         }
-
-
         public async Task<IEnumerable<EspecieDTO>> Get()
         {
             var lista = await _repo.Get();
@@ -29,7 +28,7 @@ namespace petTrackerApi.Services
             return especie == null ? null : Mapper.EspecieMapToDTO(especie);
         }
 
-        public Task<(bool Exito, string Error, EspecieDTO dto)> Registro(EspecieDTO dto)
+        public Task<EspecieDTO> Create(EspecieDTO dto)
         {
             throw new NotImplementedException();
         }
@@ -38,7 +37,8 @@ namespace petTrackerApi.Services
         {
             throw new NotImplementedException();
         }
-        public Task<bool> Delete(int id)
+
+        Task<EspecieDTO> IGenericService<EspecieDTO>.Delete(int id)
         {
             throw new NotImplementedException();
         }
