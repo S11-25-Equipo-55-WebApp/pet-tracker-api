@@ -18,5 +18,11 @@
 
             return $"{idBase}_{fechaFormateada}";
         }
+        public static string GenerarCodigoVacuna(int? idBase, DateTime fecha, DateOnly? fechaProxima)
+        {
+            string fechaFormateada = fechaProxima.Value.ToString("ddMMyy");
+
+            return $"{idBase}_{fechaFormateada}{fechaFormateada}";
+        }
     }
 }
