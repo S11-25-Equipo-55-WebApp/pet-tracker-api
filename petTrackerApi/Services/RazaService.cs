@@ -2,9 +2,7 @@
 using petTrackerApi.DTO;
 using petTrackerApi.Model;
 using petTrackerApi.Repository.GenericRepository;
-using petTrackerApi.Repository.IRepository;
 using petTrackerApi.Services.GenericServices;
-using petTrackerApi.Services.IServices;
 
 namespace petTrackerApi.Services
 {

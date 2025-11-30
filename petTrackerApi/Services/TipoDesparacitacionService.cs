@@ -1,7 +1,6 @@
 ﻿using petTrackerApi.Data;
 using petTrackerApi.DTO;
 using petTrackerApi.Model;
-using petTrackerApi.Repository;
 using petTrackerApi.Repository.GenericRepository;
 using petTrackerApi.Services.GenericServices;
 
@@ -10,12 +9,10 @@ namespace petTrackerApi.Services
     public class TipoDesparacitacionService : IGenericService<TipoDesparacitacionDTO>
     {
         private readonly IGenericRepository<TipoDesparacitacion> _repository;
-        private readonly TipoDesparacitacionRepository _repoTipoDesparacitacion;
 
-        public TipoDesparacitacionService(IGenericRepository<TipoDesparacitacion> repository, TipoDesparacitacionRepository repoTipoDesparacitacion)
+        public TipoDesparacitacionService(IGenericRepository<TipoDesparacitacion> repository)
         {
             _repository = repository;
-            _repoTipoDesparacitacion = repoTipoDesparacitacion;
         }
         public async Task<IEnumerable<TipoDesparacitacionDTO>> Get()
         {
