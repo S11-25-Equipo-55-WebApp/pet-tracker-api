@@ -218,5 +218,32 @@ namespace petTrackerApi.Data
                 Codigo = dtoTipoVacuna.Codigo
             };
         }
+        public static VacunaDTO VacunaMapToDTO(Vacuna vacuna)
+        {
+            return new VacunaDTO
+            {
+                VacunaId = vacuna.VacunaId,
+                Codigo = vacuna.Codigo,
+                FechaAplicacion = vacuna.FechaAplicacion,
+                FechaProxima = vacuna.FechaProxima,
+                Notas = vacuna.Notas,
+                MascotaId = vacuna.MascotaId,
+                TipoVacunaId = vacuna.TipoVacunaId
+            };
+        }
+
+        public static Vacuna VacunaDTOMapToEntity(VacunaDTO dtoVacuna)
+        {
+            return new Vacuna
+            {
+                VacunaId = dtoVacuna.VacunaId,
+                Codigo = dtoVacuna.Codigo,
+                FechaAplicacion = dtoVacuna.FechaAplicacion,
+                FechaProxima = dtoVacuna.FechaProxima,
+                Notas = dtoVacuna.Notas,
+                MascotaId = dtoVacuna.MascotaId,
+                TipoVacunaId = dtoVacuna.TipoVacunaId
+            };
+        }
     }
 }
