@@ -26,6 +26,7 @@ builder.Services.AddScoped<IGenericService<MascotaDTO>, MascotaService>();
 builder.Services.AddScoped<IGenericService<DesparacitacionDTO>, DesparacitacionService>();
 builder.Services.AddScoped<IGenericService<TipoDesparacitacionDTO>, TipoDesparacitacionService>();
 
+builder.Services.AddScoped<IGenericService<TipoEventoDTO>, TipoEventoService>();
 
 //Repository
 builder.Services.AddScoped<MascotaRepository>();
@@ -43,6 +44,7 @@ builder.Services.AddScoped<IEspecieService, EspecieService>();
 builder.Services.AddScoped<IRazaRepository, RazaRepository>();
 builder.Services.AddScoped<IRazaService, RazaService>();
 builder.Services.AddScoped<IGenericRepository<Desparacitacion>, DesparacitacionRepository>();
+builder.Services.AddScoped<IGenericRepository<TipoEvento>, TipoEventoRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -110,7 +112,7 @@ builder.Services.AddSwaggerGen(options =>
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description =
-        "Autenticación JWT usando el esquema Bearer. \r\n\r\n " +
+        "AutenticaciÃ³n JWT usando el esquema Bearer. \r\n\r\n " +
         "Ingresa la palabra 'Bearer' seguida de un [espacio] y despues su token en el campo de abajo \r\n\r\n" +
         "Ejemplo: \"Bearer tkdknkdllskd\"",
         Name = "Authorization",
