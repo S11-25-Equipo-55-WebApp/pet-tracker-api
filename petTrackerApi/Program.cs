@@ -1,21 +1,32 @@
-using petTrackerApi.Data;
-using petTrackerApi.Repository;
-using petTrackerApi.Services;
+using CloudinaryDotNet;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Text;
-using petTrackerApi.Repository.GenericRepository;
+using petTrackerApi.Data;
 using petTrackerApi.DTO;
 using petTrackerApi.Model;
-using petTrackerApi.Services.GenericServices;
+using petTrackerApi.Repository;
+using petTrackerApi.Repository.GenericRepository;
 using petTrackerApi.Repository.IRepository;
+using petTrackerApi.Services;
+using petTrackerApi.Services.GenericServices;
 using petTrackerApi.Services.IServices;
+using petTrackerApi.Services;
+using System.Text;
+using SubirArchivoClodinary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add services to the container. Cloudinary
+var cloudConfig = builder.Configuration.GetSection("Cloudinary");
+var account = new Account(
+    cloudConfig["CloudName"],
+    cloudConfig["ApiKey"],
+    cloudConfig["ApiSecret"]
+);
+
+builder.Services.AddSingleton(new Cloudinary(account));
 
 //Services
 
@@ -30,6 +41,7 @@ builder.Services.AddScoped<IGenericService<TipoVacunaDTO>, TipoVacunaService>();
 builder.Services.AddScoped<IGenericService<TipoAlimentoDTO>, TipoAlimentoService>();
 builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<EspecieDTO>, EspecieService>();
+builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
 
 //Repository
 
@@ -43,6 +55,7 @@ builder.Services.AddScoped<IGenericRepository<TipoDesparacitacion>, TipoDesparac
 builder.Services.AddScoped<IGenericRepository<TipoEvento>, TipoEventoRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoVacuna>, TipoVacunaRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoAlimento>, TipoAlimentoRepository>();
+builder.Services.AddScoped<ICloudinaryRepository, CloudinaryRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
@@ -133,6 +146,15 @@ builder.Services.AddSwaggerGen(options =>
             },
             new List<string>()
         }
+    });
+});
+// Swagger configurado para manejar archivos (IFormFile)
+builder.Services.AddSwaggerGen(c =>
+{
+    c.MapType<IFormFile>(() => new Microsoft.OpenApi.Models.OpenApiSchema
+    {
+        Type = "string",
+        Format = "binary"
     });
 });
 
