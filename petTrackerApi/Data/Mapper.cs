@@ -154,6 +154,25 @@ namespace petTrackerApi.Data
                 CreadoAt = dtoDesparacitacion.CreadoAt,
                 EditadoAt = dtoDesparacitacion.EditadoAt
             };
+        }    
+        public static TipoDesparacitacionDTO TipoDesparacitacionMapToDTO(TipoDesparacitacion tipoDesparacitacion)
+        {
+            return new TipoDesparacitacionDTO
+            {
+                TipoDesparacitacionId = tipoDesparacitacion.TipoDesparacitacionId,
+                Nombre = tipoDesparacitacion.Nombre,
+                Codigo = tipoDesparacitacion.Codigo
+            };
+        }
+
+        public static TipoDesparacitacion TipoDesparacitacionDTOMapToEntity(TipoDesparacitacionDTO dtoTipoDesparacitacion)
+        {
+            return new TipoDesparacitacion
+            {
+                TipoDesparacitacionId = dtoTipoDesparacitacion.TipoDesparacitacionId,
+                Nombre = dtoTipoDesparacitacion.Nombre,
+                Codigo = dtoTipoDesparacitacion.Codigo
+            };
         }
         public static TipoEvento TipoEventoDTOMapToEntity(TipoEventoDTO tipo)
         {

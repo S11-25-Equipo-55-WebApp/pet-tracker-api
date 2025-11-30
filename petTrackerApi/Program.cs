@@ -30,6 +30,7 @@ builder.Services.AddScoped<IGenericService<EspecieDTO>, EspecieService>();
 
 //Repository
 builder.Services.AddScoped<DesparacitacionRepository>();
+builder.Services.AddScoped<TipoDesparacitacionRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IMascotaRepository, MascotaRepository>();
 builder.Services.AddScoped<IDesparacitacionRepository, DesparacitacionRepository>();
@@ -103,7 +104,7 @@ builder.Services.AddSwaggerGen(options =>
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description =
-        "Autenticación JWT usando el esquema Bearer. \r\n\r\n " +
+        "AutenticaciÃ³n JWT usando el esquema Bearer. \r\n\r\n " +
         "Ingresa la palabra 'Bearer' seguida de un [espacio] y despues su token en el campo de abajo \r\n\r\n" +
         "Ejemplo: \"Bearer tkdknkdllskd\"",
         Name = "Authorization",
