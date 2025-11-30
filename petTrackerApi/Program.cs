@@ -22,8 +22,8 @@ builder.Services.AddScoped<DesparacitacionService>();
 builder.Services.AddScoped<MascotaService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IMascotaService, MascotaService>();
+builder.Services.AddScoped<IDesparacitacionService, DesparacitacionService>();
 builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
-builder.Services.AddScoped<IGenericService<DesparacitacionDTO>, DesparacitacionService>();
 builder.Services.AddScoped<IGenericService<TipoEventoDTO>, TipoEventoService>();
 builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<EspecieDTO>, EspecieService>();
@@ -31,11 +31,10 @@ builder.Services.AddScoped<IGenericService<EspecieDTO>, EspecieService>();
 //Repository
 builder.Services.AddScoped<DesparacitacionRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-builder.Services.AddScoped<IMascotaRepository, MascotaRepository>(); //este modifique
+builder.Services.AddScoped<IMascotaRepository, MascotaRepository>();
+builder.Services.AddScoped<IDesparacitacionRepository, DesparacitacionRepository>();
 builder.Services.AddScoped<IGenericRepository<Especie>, EspecieRepository>();
 builder.Services.AddScoped<IGenericRepository<Raza>, RazaRepository>();
-builder.Services.AddScoped<IGenericRepository<Desparacitacion>, DesparacitacionRepository>();
-
 builder.Services.AddScoped<IGenericRepository<TipoEvento>, TipoEventoRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>

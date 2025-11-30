@@ -2,6 +2,7 @@
 using petTrackerApi.DTO;
 using petTrackerApi.Services;
 using petTrackerApi.Services.GenericServices;
+using petTrackerApi.Services.IServices;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -11,12 +12,10 @@ namespace petTrackerApi.Controllers
     [ApiController]
     public class DesparacitacionController : ControllerBase
     {
-        private IGenericService<DesparacitacionDTO> _service;
-        private readonly DesparacitacionService _serviceDesparacitacion;
-        public DesparacitacionController(IGenericService<DesparacitacionDTO> services, DesparacitacionService servicioDesparacitacion)
+        private IDesparacitacionService _service;
+        public DesparacitacionController(IDesparacitacionService services)
         {
             _service = services;
-            _serviceDesparacitacion = servicioDesparacitacion;
         }
             // GET: api/<DesparacitacionController>
             [HttpGet]
@@ -70,7 +69,7 @@ namespace petTrackerApi.Controllers
         [HttpGet("get-desparacitacion-por-mascota")]
         public async Task<IEnumerable<DesparacitacionDTO>> GetDesparacitacionesByIdMascota(int id)
         {
-            return await _serviceDesparacitacion.GetDesparacitacionesByIdMascota(id);
+            return await _service.GetDesparacitacionesByIdMascota(id);
         }
 
     }
