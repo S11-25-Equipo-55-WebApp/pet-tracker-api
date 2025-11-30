@@ -264,5 +264,39 @@ namespace petTrackerApi.Data
                 Codigo = dtoTipoAlimento.Codigo
             };
         }
+
+        public static Calendario CalendatioDTOMapToEntity(CalendarioDTO calendario)
+        {
+            return new Calendario
+            {
+                CalendarioId = calendario.CalendarioId,
+                Codigo = calendario.Codigo,
+                CreadoAt = calendario.CreadoAt,
+                EditadoAt = calendario.EditadoAt,
+                FechaEvento = calendario.FechaEvento,
+                MascotaId = calendario.MascotaId,
+                Notas = calendario.Notas,
+                Titulo = calendario.Titulo,
+                TipoEventoId = calendario.TipoEventoId,
+                UsuarioId = calendario.UsuarioId
+            };
+        }
+
+        public static CalendarioDTO CalendarioMapToDTO(Calendario calendario)
+        {
+            return new CalendarioDTO
+            {
+                CalendarioId = calendario.CalendarioId,
+                Codigo = calendario.Codigo,
+                CreadoAt = calendario.CreadoAt,
+                EditadoAt = calendario.EditadoAt,
+                FechaEvento = calendario.FechaEvento,
+                MascotaId = calendario.MascotaId,
+                Notas = calendario.Notas,
+                Titulo = calendario.Titulo,
+                TipoEventoId = calendario.TipoEventoId,
+                UsuarioId = calendario.UsuarioId
+            };
+        }
     }
 }
