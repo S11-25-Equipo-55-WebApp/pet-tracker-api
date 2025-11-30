@@ -1,12 +1,13 @@
 ﻿using petTrackerApi.Data;
 using petTrackerApi.DTO;
 using petTrackerApi.Model;
-using petTrackerApi.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using petTrackerApi.Repository.IRepository;
+using petTrackerApi.Services.IServices;
 
 namespace petTrackerApi.Services
 {

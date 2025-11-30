@@ -7,11 +7,10 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using petTrackerApi.Repository.IRepository;
 
 namespace petTrackerApi.Repository
-{
-
-    
+{  
 
     public class UsuarioRepository : IUsuarioRepository
     {
@@ -98,8 +97,6 @@ namespace petTrackerApi.Repository
         {
             _db.Usuarios.Update(usuario);
             await _db.SaveChangesAsync();
-        }
-
-        
+        }        
     }    
 }

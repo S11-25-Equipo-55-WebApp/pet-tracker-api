@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using petTrackerApi.Data;
 using petTrackerApi.Model;
+using petTrackerApi.Repository.GenericRepository;
+using petTrackerApi.Repository.IRepository;
 
 namespace petTrackerApi.Repository
 {
-    public class RazaRepository : IRazaRepository
+    public class RazaRepository : IGenericRepository<Raza>
     {
         private readonly DBContext _db;
 
@@ -22,17 +24,16 @@ namespace petTrackerApi.Repository
         {
             return await _db.Razas.FindAsync(id);
         }
-
-        public Task<Raza> Registro(Raza raza)
+        public Task<Raza> Create(Raza entity)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Raza> Update(int id, Raza raza)
+        public Task<Raza> Update(Raza entity)
         {
             throw new NotImplementedException();
         }
-        public Task<Raza> Delete(int id)
+        public Task<Raza> Delete(Raza entity)
         {
             throw new NotImplementedException();
         }

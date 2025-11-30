@@ -1,6 +1,6 @@
 ﻿using petTrackerApi.DTO;
 
-namespace petTrackerApi.Services
+namespace petTrackerApi.Services.IServices
 {
     public interface IUsuarioService
     {

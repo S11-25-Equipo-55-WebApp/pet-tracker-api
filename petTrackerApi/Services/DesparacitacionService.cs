@@ -4,19 +4,18 @@ using petTrackerApi.Helpers;
 using petTrackerApi.Model;
 using petTrackerApi.Repository;
 using petTrackerApi.Repository.GenericRepository;
+using petTrackerApi.Repository.IRepository;
 using petTrackerApi.Services.GenericServices;
+using petTrackerApi.Services.IServices;
 
 namespace petTrackerApi.Services
 {
-    public class DesparacitacionService : IGenericService<DesparacitacionDTO>
+    public class DesparacitacionService : IDesparacitacionService
     {
-        private readonly IGenericRepository<Desparacitacion> _repository;
-        private readonly DesparacitacionRepository _repDesparacitacion;
-
-        public DesparacitacionService(IGenericRepository<Desparacitacion> repository, DesparacitacionRepository repDesparacitacion)
+        private readonly IDesparacitacionRepository _repository;
+        public DesparacitacionService(IDesparacitacionRepository repository)
         {
             _repository = repository;
-            _repDesparacitacion = repDesparacitacion;
         }
         public async Task<IEnumerable<DesparacitacionDTO>> Get()
         {
@@ -67,7 +66,7 @@ namespace petTrackerApi.Services
 
         public async Task<IEnumerable<DesparacitacionDTO>> GetDesparacitacionesByIdMascota(int id)
         {
-            var listado = await _repDesparacitacion.GetDesparacitacionesByIdMascota(id);
+            var listado = await _repository.GetDesparacitacionesByIdMascota(id);
             return listado.Select(Mapper.DesparacitacionMapToDTO);
         }
     }

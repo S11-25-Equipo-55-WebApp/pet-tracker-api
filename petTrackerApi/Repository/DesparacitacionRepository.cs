@@ -2,10 +2,11 @@
 using petTrackerApi.Data;
 using petTrackerApi.Model;
 using petTrackerApi.Repository.GenericRepository;
+using petTrackerApi.Repository.IRepository;
 
 namespace petTrackerApi.Repository
 {
-    public class DesparacitacionRepository : IGenericRepository<Desparacitacion>
+    public class DesparacitacionRepository : IDesparacitacionRepository
     {
         private readonly DBContext _db;
 

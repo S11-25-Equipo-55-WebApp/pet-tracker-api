@@ -10,40 +10,32 @@ using petTrackerApi.Repository.GenericRepository;
 using petTrackerApi.DTO;
 using petTrackerApi.Model;
 using petTrackerApi.Services.GenericServices;
+using petTrackerApi.Repository.IRepository;
+using petTrackerApi.Services.IServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 //Services
-builder.Services.AddScoped<MascotaService>();
 builder.Services.AddScoped<DesparacitacionService>();
-builder.Services.AddScoped<TipoDesparacitacionService>();
+builder.Services.AddScoped<MascotaService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
-builder.Services.AddScoped<IEspecieService, EspecieService>();
-builder.Services.AddScoped<IRazaService, RazaService>();
-builder.Services.AddScoped<IGenericService<MascotaDTO>, MascotaService>();
-builder.Services.AddScoped<IGenericService<DesparacitacionDTO>, DesparacitacionService>();
-builder.Services.AddScoped<IGenericService<TipoDesparacitacionDTO>, TipoDesparacitacionService>();
-
+builder.Services.AddScoped<IMascotaService, MascotaService>();
+builder.Services.AddScoped<IDesparacitacionService, DesparacitacionService>();
+builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<TipoEventoDTO>, TipoEventoService>();
+builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
+builder.Services.AddScoped<IGenericService<EspecieDTO>, EspecieService>();
 
 //Repository
-builder.Services.AddScoped<MascotaRepository>();
 builder.Services.AddScoped<DesparacitacionRepository>();
 builder.Services.AddScoped<TipoDesparacitacionRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
-builder.Services.AddScoped<IRazaRepository, RazaRepository>();
-builder.Services.AddScoped<IGenericRepository<Mascota>, MascotaRepository>();
-builder.Services.AddScoped<IGenericRepository<TipoDesparacitacion>, TipoDesparacitacionRepository>();
-
-builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
-builder.Services.AddScoped<IEspecieService, EspecieService>();
-
-builder.Services.AddScoped<IRazaRepository, RazaRepository>();
-builder.Services.AddScoped<IRazaService, RazaService>();
-builder.Services.AddScoped<IGenericRepository<Desparacitacion>, DesparacitacionRepository>();
+builder.Services.AddScoped<IMascotaRepository, MascotaRepository>();
+builder.Services.AddScoped<IDesparacitacionRepository, DesparacitacionRepository>();
+builder.Services.AddScoped<IGenericRepository<Especie>, EspecieRepository>();
+builder.Services.AddScoped<IGenericRepository<Raza>, RazaRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoEvento>, TipoEventoRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>

@@ -1,18 +1,19 @@
 ﻿using petTrackerApi.Data;
 using petTrackerApi.DTO;
-using petTrackerApi.Repository;
+using petTrackerApi.Model;
+using petTrackerApi.Repository.GenericRepository;
+using petTrackerApi.Repository.IRepository;
+using petTrackerApi.Services.GenericServices;
+using petTrackerApi.Services.IServices;
 
 namespace petTrackerApi.Services
 {
-    public class RazaService : IRazaService
+    public class RazaService : IGenericService<RazaDTO>
     {
-        private readonly IRazaRepository _repo;
-        private readonly IConfiguration _config;
-
-        public RazaService(IRazaRepository repo, IConfiguration config)
+        private readonly IGenericRepository<Raza> _repo;
+        public RazaService(IGenericRepository<Raza> repo)
         {
             _repo = repo;
-            _config = config;
         }
         public async Task<IEnumerable<RazaDTO>> Get()
         {
@@ -26,7 +27,7 @@ namespace petTrackerApi.Services
             return raza == null ? null : Mapper.RazaMapToDTO(raza);
         }
 
-        public Task<(bool Exito, string Error, RazaDTO dto)> Registro(RazaDTO dto)
+        public Task<RazaDTO> Create(RazaDTO dto)
         {
             throw new NotImplementedException();
         }
@@ -35,7 +36,8 @@ namespace petTrackerApi.Services
         {
             throw new NotImplementedException();
         }
-        public Task<bool> Delete(int id)
+
+        Task<RazaDTO> IGenericService<RazaDTO>.Delete(int id)
         {
             throw new NotImplementedException();
         }

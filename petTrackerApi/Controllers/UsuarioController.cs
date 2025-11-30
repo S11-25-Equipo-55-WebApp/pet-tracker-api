@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using petTrackerApi.Data;
 using petTrackerApi.DTO;
 using petTrackerApi.Repository;
-using petTrackerApi.Services;
+using petTrackerApi.Services.IServices;
 
 namespace petTrackerApi.Controllers
 {
