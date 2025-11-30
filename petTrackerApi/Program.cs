@@ -18,20 +18,25 @@ var builder = WebApplication.CreateBuilder(args);
 //Services
 builder.Services.AddScoped<MascotaService>();
 builder.Services.AddScoped<DesparacitacionService>();
+builder.Services.AddScoped<TipoDesparacitacionService>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IEspecieService, EspecieService>();
 builder.Services.AddScoped<IRazaService, RazaService>();
 builder.Services.AddScoped<IGenericService<MascotaDTO>, MascotaService>();
 builder.Services.AddScoped<IGenericService<DesparacitacionDTO>, DesparacitacionService>();
+builder.Services.AddScoped<IGenericService<TipoDesparacitacionDTO>, TipoDesparacitacionService>();
+
 builder.Services.AddScoped<IGenericService<TipoEventoDTO>, TipoEventoService>();
 
 //Repository
 builder.Services.AddScoped<MascotaRepository>();
 builder.Services.AddScoped<DesparacitacionRepository>();
+builder.Services.AddScoped<TipoDesparacitacionRepository>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
 builder.Services.AddScoped<IRazaRepository, RazaRepository>();
 builder.Services.AddScoped<IGenericRepository<Mascota>, MascotaRepository>();
+builder.Services.AddScoped<IGenericRepository<TipoDesparacitacion>, TipoDesparacitacionRepository>();
 
 builder.Services.AddScoped<IEspecieRepository, EspecieRepository>();
 builder.Services.AddScoped<IEspecieService, EspecieService>();
@@ -107,7 +112,7 @@ builder.Services.AddSwaggerGen(options =>
     options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description =
-        "Autenticación JWT usando el esquema Bearer. \r\n\r\n " +
+        "AutenticaciÃ³n JWT usando el esquema Bearer. \r\n\r\n " +
         "Ingresa la palabra 'Bearer' seguida de un [espacio] y despues su token en el campo de abajo \r\n\r\n" +
         "Ejemplo: \"Bearer tkdknkdllskd\"",
         Name = "Authorization",
