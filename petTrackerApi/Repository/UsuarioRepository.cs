@@ -10,9 +10,7 @@ using System.Text;
 using petTrackerApi.Repository.IRepository;
 
 namespace petTrackerApi.Repository
-{
-
-    
+{  
 
     public class UsuarioRepository : IUsuarioRepository
     {
@@ -99,8 +97,6 @@ namespace petTrackerApi.Repository
         {
             _db.Usuarios.Update(usuario);
             await _db.SaveChangesAsync();
-        }
-
-        
+        }        
     }    
 }

@@ -3,10 +3,11 @@ using petTrackerApi.Data;
 using petTrackerApi.Helpers;
 using petTrackerApi.Model;
 using petTrackerApi.Repository.GenericRepository;
+using petTrackerApi.Repository.IRepository;
 
 namespace petTrackerApi.Repository
 {
-    public class MascotaRepository : IGenericRepository<Mascota>
+    public class MascotaRepository : IMascotaRepository
     {
         private readonly DBContext _db;
 
@@ -44,8 +45,7 @@ namespace petTrackerApi.Repository
             await _db.SaveChangesAsync();
             return mascota;
         }
-
-        public async Task<IEnumerable<Mascota>> GetByIdUsuario(int id)
+        public async Task<IEnumerable<Mascota>> GetByIdEntity(int id)
         {
             return await _db.Mascota.Where(x => x.UsuarioId == id).ToListAsync();
         }

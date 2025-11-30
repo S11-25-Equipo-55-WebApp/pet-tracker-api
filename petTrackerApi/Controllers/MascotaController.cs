@@ -3,6 +3,7 @@ using petTrackerApi.DTO;
 using petTrackerApi.Repository;
 using petTrackerApi.Services;
 using petTrackerApi.Services.GenericServices;
+using petTrackerApi.Services.IServices;
 using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,12 +14,10 @@ namespace petTrackerApi.Controllers
     [ApiController]
     public class MascotaController : ControllerBase
     {
-        private IGenericService<MascotaDTO> _service;
-        private readonly MascotaService _serviceMascota;
-        public MascotaController(IGenericService<MascotaDTO> services, MascotaService servicioMascota)
+        private readonly IMascotaService _service;
+        public MascotaController(IMascotaService services)
         {
             _service = services;
-            _serviceMascota = servicioMascota;
         }
 
         // GET: api/<MascotaController>
@@ -74,7 +73,7 @@ namespace petTrackerApi.Controllers
         [HttpGet("get-mascota-por-usuario")]
         public async Task<IEnumerable<MascotaDTO>> GetMascotasByUser(int id)
         {
-            return await _serviceMascota.GetMascotaByIdUsuario(id);
+            return await _service.GetMascotasByIdUsuario(id);
         }
     }
 }

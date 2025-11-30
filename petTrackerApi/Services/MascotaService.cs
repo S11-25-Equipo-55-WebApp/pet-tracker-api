@@ -5,18 +5,18 @@ using petTrackerApi.Repository.GenericRepository;
 using petTrackerApi.Services.GenericServices;
 using petTrackerApi.Helpers;
 using petTrackerApi.Repository;
+using petTrackerApi.Repository.IRepository;
+using petTrackerApi.Services.IServices;
 
 namespace petTrackerApi.Services
 {
-    public class MascotaService : IGenericService<MascotaDTO>
+    public class MascotaService : IMascotaService
     {
-        private readonly IGenericRepository<Mascota> _repository;
-        private readonly MascotaRepository _repoMascota;
+        private readonly IMascotaRepository _repository;
         
-        public MascotaService(IGenericRepository<Mascota> repository, MascotaRepository repMascota)
+        public MascotaService(IMascotaRepository repository)
         {
             _repository = repository;
-            _repoMascota = repMascota;
         }
 
         public async Task<IEnumerable<MascotaDTO>> Get()
@@ -70,9 +70,9 @@ namespace petTrackerApi.Services
             return Mapper.MascotaMapToDTO(mascotaEncontrada);
         }
 
-        public async Task<IEnumerable<MascotaDTO>> GetMascotaByIdUsuario(int id)
+        public async Task<IEnumerable<MascotaDTO>> GetMascotasByIdUsuario(int id)
         {
-            var listado = await _repoMascota.GetByIdUsuario(id);
+            var listado = await _repository.GetByIdEntity(id);
             return listado.Select(Mapper.MascotaMapToDTO);
         }
     }
