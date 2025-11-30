@@ -27,6 +27,7 @@ builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<TipoDesparacitacionDTO>, TipoDesparacitacionService>();
 builder.Services.AddScoped<IGenericService<TipoEventoDTO>, TipoEventoService>();
 builder.Services.AddScoped<IGenericService<TipoVacunaDTO>, TipoVacunaService>();
+builder.Services.AddScoped<IGenericService<TipoAlimentoDTO>, TipoAlimentoService>();
 builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<EspecieDTO>, EspecieService>();
 
@@ -41,6 +42,7 @@ builder.Services.AddScoped<IGenericRepository<Raza>, RazaRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoDesparacitacion>, TipoDesparacitacionRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoEvento>, TipoEventoRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoVacuna>, TipoVacunaRepository>();
+builder.Services.AddScoped<IGenericRepository<TipoAlimento>, TipoAlimentoRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

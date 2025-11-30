@@ -245,5 +245,24 @@ namespace petTrackerApi.Data
                 TipoVacunaId = dtoVacuna.TipoVacunaId
             };
         }
+        public static TipoAlimentoDTO TipoAlimentoMapToDTO(TipoAlimento tipoAlimento)
+        {
+            return new TipoAlimentoDTO
+            {
+                TipoAlimentoId = tipoAlimento.TipoAlimentoId,
+                Nombre = tipoAlimento.Nombre,
+                Codigo = tipoAlimento.Codigo
+            };
+        }
+
+        public static TipoAlimento TipoAlimentoDTOMapToEntity(TipoAlimentoDTO dtoTipoAlimento)
+        {
+            return new TipoAlimento
+            {
+                TipoAlimentoId = dtoTipoAlimento.TipoAlimentoId,
+                Nombre = dtoTipoAlimento.Nombre,
+                Codigo = dtoTipoAlimento.Codigo
+            };
+        }
     }
 }
