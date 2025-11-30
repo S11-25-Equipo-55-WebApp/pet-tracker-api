@@ -18,25 +18,27 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 //Services
-builder.Services.AddScoped<DesparacitacionService>();
-builder.Services.AddScoped<MascotaService>();
+
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IMascotaService, MascotaService>();
 builder.Services.AddScoped<IDesparacitacionService, DesparacitacionService>();
 builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
+builder.Services.AddScoped<IGenericService<TipoDesparacitacionDTO>, TipoDesparacitacionService>();
 builder.Services.AddScoped<IGenericService<TipoEventoDTO>, TipoEventoService>();
+builder.Services.AddScoped<IGenericService<TipoVacunaDTO>, TipoVacunaService>();
 builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<EspecieDTO>, EspecieService>();
 
 //Repository
-builder.Services.AddScoped<DesparacitacionRepository>();
-builder.Services.AddScoped<TipoDesparacitacionRepository>();
+
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IMascotaRepository, MascotaRepository>();
 builder.Services.AddScoped<IDesparacitacionRepository, DesparacitacionRepository>();
 builder.Services.AddScoped<IGenericRepository<Especie>, EspecieRepository>();
 builder.Services.AddScoped<IGenericRepository<Raza>, RazaRepository>();
+builder.Services.AddScoped<IGenericRepository<TipoDesparacitacion>, TipoDesparacitacionRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoEvento>, TipoEventoRepository>();
+builder.Services.AddScoped<IGenericRepository<TipoVacuna>, TipoVacunaRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

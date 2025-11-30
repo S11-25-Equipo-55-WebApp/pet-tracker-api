@@ -199,5 +199,24 @@ namespace petTrackerApi.Data
                 EditadoAt = tipo.EditadoAt,
             };
         }
+        public static TipoVacunaDTO TipoVacunaMapToDTO(TipoVacuna tipoVacuna)
+        {
+            return new TipoVacunaDTO
+            {
+                TipoVacunaId = tipoVacuna.TipoVacunaId,
+                Nombre = tipoVacuna.Nombre,
+                Codigo = tipoVacuna.Codigo
+            };
+        }
+
+        public static TipoVacuna TipoVacunaDTOMapToEntity(TipoVacunaDTO dtoTipoVacuna)
+        {
+            return new TipoVacuna
+            {
+                TipoVacunaId = dtoTipoVacuna.TipoVacunaId,
+                Nombre = dtoTipoVacuna.Nombre,
+                Codigo = dtoTipoVacuna.Codigo
+            };
+        }
     }
 }

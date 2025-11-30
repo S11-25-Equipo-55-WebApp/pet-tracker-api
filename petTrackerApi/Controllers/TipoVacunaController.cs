@@ -8,23 +8,23 @@ namespace petTrackerApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TipoDesparacitacionController : ControllerBase
+    public class TipoVacunaController : ControllerBase
     {
-        private IGenericService<TipoDesparacitacionDTO> _service;
-        public TipoDesparacitacionController(IGenericService<TipoDesparacitacionDTO> services)
+        private IGenericService<TipoVacunaDTO> _service;
+        public TipoVacunaController(IGenericService<TipoVacunaDTO> services)
         {
             _service = services;
         }
-        // GET: api/<TipoDesparacitacionController>
+        // GET: api/<TipoVacunaController>
         [HttpGet]
-        public async Task<IEnumerable<TipoDesparacitacionDTO>> Get()
+        public async Task<IEnumerable<TipoVacunaDTO>> Get()
         {
             return await _service.Get();
         }
 
-        // GET api/<TipoDesparacitacionController>/5
+        // GET api/<TipoVacunaController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<TipoDesparacitacionDTO>> GetById(int id)
+        public async Task<ActionResult<TipoVacunaDTO>> GetById(int id)
         {
             var result = await _service.GetById(id);
             if (result == null) return NotFound();
