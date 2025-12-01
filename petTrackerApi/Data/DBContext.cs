@@ -204,8 +204,9 @@ namespace petTrackerApi.Data
 
             modelBuilder.Entity<Dieta>(entity =>
             {
-                entity.HasKey(e => e.DietaId);
+                entity.ToTable("Dieta");
 
+                entity.HasKey(e => e.DietaId);
                 entity.Property(e => e.DietaId).HasColumnName("dietaId");
                 entity.Property(e => e.Codigo)
                     .HasMaxLength(50)

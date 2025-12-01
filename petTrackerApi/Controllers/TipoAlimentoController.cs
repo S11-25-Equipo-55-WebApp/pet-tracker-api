@@ -15,14 +15,14 @@ namespace petTrackerApi.Controllers
         {
             _service = services;
         }
-        // GET: api/<TipoVacunaController>
+        // GET: api/<TipoAlimentoController>
         [HttpGet]
         public async Task<IEnumerable<TipoAlimentoDTO>> Get()
         {
             return await _service.Get();
         }
 
-        // GET api/<TipoVacunaController>/5
+        // GET api/<TipoAlimentoController>/5
         [HttpGet("{id}")]
         public async Task<ActionResult<TipoAlimentoDTO>> GetById(int id)
         {
