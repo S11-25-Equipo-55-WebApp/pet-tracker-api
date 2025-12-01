@@ -290,6 +290,98 @@ namespace petTrackerApi.Data
                 MascotaId = dtoDieta.MascotaId,
                 TipoAlimentoId = dtoDieta.TipoAlimentoId,
                 UnidadMedidaId = dtoDieta.UnidadMedidaId
+
+        public static Calendario CalendatioDTOMapToEntity(CalendarioDTO calendario)
+        {
+            return new Calendario
+            {
+                CalendarioId = calendario.CalendarioId,
+                Codigo = calendario.Codigo,
+                CreadoAt = calendario.CreadoAt,
+                EditadoAt = calendario.EditadoAt,
+                FechaEvento = calendario.FechaEvento,
+                MascotaId = calendario.MascotaId,
+                Notas = calendario.Notas,
+                Titulo = calendario.Titulo,
+                TipoEventoId = calendario.TipoEventoId,
+                UsuarioId = calendario.UsuarioId
+            };
+        }
+
+        public static CalendarioDTO CalendarioMapToDTO(Calendario calendario)
+        {
+            return new CalendarioDTO
+            {
+                CalendarioId = calendario.CalendarioId,
+                Codigo = calendario.Codigo,
+                CreadoAt = calendario.CreadoAt,
+                EditadoAt = calendario.EditadoAt,
+                FechaEvento = calendario.FechaEvento,
+                MascotaId = calendario.MascotaId,
+                Notas = calendario.Notas,
+                Titulo = calendario.Titulo,
+                TipoEventoId = calendario.TipoEventoId,
+                UsuarioId = calendario.UsuarioId
+            };
+        }
+
+        public static EstadoRecordatorio EstadoRecordatorioMapToEntity(EstadoRecordatorioDTO estadoRecordatorio)
+        {
+            return new EstadoRecordatorio
+            {
+                Codigo = estadoRecordatorio.Codigo,
+                CreadoAt = estadoRecordatorio.CreadoAt,
+                EditadoAt = estadoRecordatorio.EditadoAt,
+                EstadoId = estadoRecordatorio.EstadoId,
+                Nombre = estadoRecordatorio.Nombre  
+            };
+        }
+
+        public static EstadoRecordatorioDTO EstadoRecordatorioMapToDTO(EstadoRecordatorio estadoRecordatorio)
+        {
+            return new EstadoRecordatorioDTO
+            {
+                Codigo = estadoRecordatorio.Codigo,
+                CreadoAt = estadoRecordatorio.CreadoAt,
+                EditadoAt = estadoRecordatorio.EditadoAt,
+                EstadoId = estadoRecordatorio.EstadoId,
+                Nombre = estadoRecordatorio.Nombre
+            };
+        }
+
+        public static Tratamiento TratamientoDTOMapToEntity(TratamientoDTO tratamiento)
+        {
+            return new Tratamiento
+            {
+                TratamientoId = tratamiento.TratamientoId,
+                Codigo = tratamiento.Codigo,
+                ConsultaId = tratamiento.ConsultaId,
+                CreadoAt = tratamiento.CreadoAt,
+                Dosis = tratamiento.Dosis,
+                EditadoAt = tratamiento.EditadoAt,
+                FechaFin = tratamiento.FechaFin,
+                FechaInicio = tratamiento.FechaInicio,
+                Frecuencia = tratamiento.Frecuencia,
+                Nombre = tratamiento.Nombre,
+                Notas = tratamiento.Notas
+            };
+        }
+
+        public static TratamientoDTO TratamientoMapToDTO(Tratamiento tratamiento)
+        {
+            return new TratamientoDTO
+            {
+                TratamientoId = tratamiento.TratamientoId,
+                Codigo = tratamiento.Codigo,
+                ConsultaId = tratamiento.ConsultaId,
+                CreadoAt = tratamiento.CreadoAt,
+                Dosis = tratamiento.Dosis,
+                EditadoAt = tratamiento.EditadoAt,
+                FechaFin = tratamiento.FechaFin,
+                FechaInicio = tratamiento.FechaInicio,
+                Frecuencia = tratamiento.Frecuencia,
+                Nombre = tratamiento.Nombre,
+                Notas = tratamiento.Notas
             };
         }
     }

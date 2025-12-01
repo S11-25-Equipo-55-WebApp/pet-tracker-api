@@ -38,7 +38,7 @@ namespace petTrackerApi.Controllers
 
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<TipoEventoDTO>> Uodate(int id, TipoEventoDTO book)
+        public async Task<ActionResult<TipoEventoDTO>> Update(int id, TipoEventoDTO book)
         {
             var consulta = await _services.Update(id, book);
             if (consulta == null) return NotFound();
