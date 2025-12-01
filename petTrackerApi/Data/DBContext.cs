@@ -204,8 +204,9 @@ namespace petTrackerApi.Data
 
             modelBuilder.Entity<Dieta>(entity =>
             {
-                entity.HasKey(e => e.DietaId);
+                entity.ToTable("Dieta");
 
+                entity.HasKey(e => e.DietaId);
                 entity.Property(e => e.DietaId).HasColumnName("dietaId");
                 entity.Property(e => e.Codigo)
                     .HasMaxLength(50)
@@ -728,6 +729,20 @@ namespace petTrackerApi.Data
                     .HasForeignKey(d => d.TipoVacunaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Vacuna_TipoVacuna");
+            });
+            modelBuilder.Entity<UnidadMedida>(entity =>
+            {
+                entity.ToTable("UnidadMedida");
+
+                entity.Property(e => e.UnidadMedidaId).HasColumnName("unidadMedidaId");
+                entity.Property(e => e.Nombre)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("nombre");
+                entity.Property(e => e.Abreviatura)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("abreviatura");
             });
 
             OnModelCreatingPartial(modelBuilder);

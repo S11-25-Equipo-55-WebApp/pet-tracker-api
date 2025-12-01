@@ -264,6 +264,32 @@ namespace petTrackerApi.Data
                 Codigo = dtoTipoAlimento.Codigo
             };
         }
+        public static DietaDTO DietaMapToDTO(Dieta dieta)
+        {
+            return new DietaDTO
+            {
+                DietaId = dieta.DietaId,
+                Codigo = dieta.Codigo,
+                PorcionDia = dieta.PorcionDia,
+                Notas = dieta.Notas,
+                MascotaId = dieta.MascotaId,
+                TipoAlimentoId = dieta.TipoAlimentoId,
+                UnidadMedidaId = dieta.UnidadMedidaId
+
+            };
+        }
+
+        public static Dieta DietaDTOMapToEntity(DietaDTO dtoDieta)
+        {
+            return new Dieta
+            {
+                DietaId = dtoDieta.DietaId,
+                Codigo = dtoDieta.Codigo,
+                PorcionDia = dtoDieta.PorcionDia,
+                Notas = dtoDieta.Notas,
+                MascotaId = dtoDieta.MascotaId,
+                TipoAlimentoId = dtoDieta.TipoAlimentoId,
+                UnidadMedidaId = dtoDieta.UnidadMedidaId
 
         public static Calendario CalendatioDTOMapToEntity(CalendarioDTO calendario)
         {

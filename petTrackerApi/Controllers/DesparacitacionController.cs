@@ -62,8 +62,9 @@ namespace petTrackerApi.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
-            var ok = await _service.Delete(id);
-            return NoContent();
+            var respuesta = await _service.Delete(id);
+            if (respuesta == null) return NotFound();
+            return Ok(respuesta);
         }
 
         [HttpGet("obtener-desparacitacion-por-mascota")]

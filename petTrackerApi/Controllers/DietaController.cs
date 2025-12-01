@@ -8,37 +8,38 @@ namespace petTrackerApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VacunaController : ControllerBase
+    public class DietaController : ControllerBase
     {
-        private readonly IVacunaService _service;
-        public VacunaController(IVacunaService services)
+        private readonly IDietaService _service;
+        public DietaController(IDietaService services)
         {
             _service = services;
         }
-        // GET: api/<VacunaController>
+
+        // GET: api/<DietaController>
         [HttpGet]
-        public async Task<IEnumerable<VacunaDTO>> Get()
+        public async Task<IEnumerable<DietaDTO>> Get()
         {
             return await _service.Get();
         }
 
-        // GET api/<VacunaController>/5
+        // GET api/<DietaController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<VacunaDTO>> GetById(int id)
+        public async Task<ActionResult<DietaDTO>> GetById(int id)
         {
             var result = await _service.GetById(id);
             if (result == null) return NotFound();
             return Ok(result);
         }
 
-        // POST api/<VacunaController>
+        // POST api/<DietaController>
         [HttpPost]
-        public async Task<IActionResult> CrearVacuna([FromBody] VacunaDTO dtoVacuna)
+        public async Task<IActionResult> CrearDieta([FromBody] DietaDTO dtoDieta)
         {
             try
             {
-                var vacunaCreada = await _service.Create(dtoVacuna);
-                return CreatedAtAction(nameof(GetById), new { id = vacunaCreada.VacunaId}, vacunaCreada);
+                var dietaCreada = await _service.Create(dtoDieta);
+                return CreatedAtAction(nameof(GetById), new { id = dietaCreada.DietaId }, dietaCreada);
             }
             catch (Exception ex)
             {
@@ -46,17 +47,17 @@ namespace petTrackerApi.Controllers
             }
         }
 
-        // PUT api/<VacunaController>/5
+        // PUT api/<DietaController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<VacunaDTO>> Update(int id, [FromBody] VacunaDTO dtoVacuna)
+        public async Task<ActionResult<DietaDTO>> Update(int id, [FromBody] DietaDTO dtoDieta)
         {
-            var actualizado = await _service.Update(id, dtoVacuna);
+            var actualizado = await _service.Update(id, dtoDieta);
             if (actualizado == null) return NotFound();
 
             return Ok(actualizado);
         }
 
-        // DELETE api/<VacunaController>/5
+        // DELETE api/<DietaController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
@@ -65,10 +66,10 @@ namespace petTrackerApi.Controllers
             return Ok(respuesta);
         }
 
-        [HttpGet("obtener-vacunas-por-mascota")]
-        public async Task<IEnumerable<VacunaDTO>> GetMascotasByUser(int id)
+        [HttpGet("obtener-dietas-por-mascota")]
+        public async Task<IEnumerable<DietaDTO>> GetDietasByUser(int id)
         {
-            return await _service.GetVacunasByIdMascota(id);
+            return await _service.GetDietasByIdMascota(id);
         }
     }
 }
