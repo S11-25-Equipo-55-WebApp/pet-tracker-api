@@ -290,6 +290,8 @@ namespace petTrackerApi.Data
                 MascotaId = dtoDieta.MascotaId,
                 TipoAlimentoId = dtoDieta.TipoAlimentoId,
                 UnidadMedidaId = dtoDieta.UnidadMedidaId
+            };
+        }
 
         public static Calendario CalendatioDTOMapToEntity(CalendarioDTO calendario)
         {
