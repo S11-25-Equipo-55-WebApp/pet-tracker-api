@@ -322,5 +322,41 @@ namespace petTrackerApi.Data
                 Nombre = estadoRecordatorio.Nombre
             };
         }
+
+        public static Tratamiento TratamientoDTOMapToEntity(TratamientoDTO tratamiento)
+        {
+            return new Tratamiento
+            {
+                TratamientoId = tratamiento.TratamientoId,
+                Codigo = tratamiento.Codigo,
+                ConsultaId = tratamiento.ConsultaId,
+                CreadoAt = tratamiento.CreadoAt,
+                Dosis = tratamiento.Dosis,
+                EditadoAt = tratamiento.EditadoAt,
+                FechaFin = tratamiento.FechaFin,
+                FechaInicio = tratamiento.FechaInicio,
+                Frecuencia = tratamiento.Frecuencia,
+                Nombre = tratamiento.Nombre,
+                Notas = tratamiento.Notas
+            };
+        }
+
+        public static TratamientoDTO TratamientoMapToDTO(Tratamiento tratamiento)
+        {
+            return new TratamientoDTO
+            {
+                TratamientoId = tratamiento.TratamientoId,
+                Codigo = tratamiento.Codigo,
+                ConsultaId = tratamiento.ConsultaId,
+                CreadoAt = tratamiento.CreadoAt,
+                Dosis = tratamiento.Dosis,
+                EditadoAt = tratamiento.EditadoAt,
+                FechaFin = tratamiento.FechaFin,
+                FechaInicio = tratamiento.FechaInicio,
+                Frecuencia = tratamiento.Frecuencia,
+                Nombre = tratamiento.Nombre,
+                Notas = tratamiento.Notas
+            };
+        }
     }
 }
