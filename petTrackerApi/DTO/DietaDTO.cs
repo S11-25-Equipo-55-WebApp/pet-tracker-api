@@ -13,5 +13,6 @@
         public int MascotaId { get; set; }
 
         public int TipoAlimentoId { get; set; }
+        public int UnidadMedidaId { get; set; }
     }
 }

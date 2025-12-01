@@ -273,7 +273,9 @@ namespace petTrackerApi.Data
                 PorcionDia = dieta.PorcionDia,
                 Notas = dieta.Notas,
                 MascotaId = dieta.MascotaId,
-                TipoAlimentoId = dieta.TipoAlimentoId
+                TipoAlimentoId = dieta.TipoAlimentoId,
+                UnidadMedidaId = dieta.UnidadMedidaId
+
             };
         }
 
@@ -286,7 +288,8 @@ namespace petTrackerApi.Data
                 PorcionDia = dtoDieta.PorcionDia,
                 Notas = dtoDieta.Notas,
                 MascotaId = dtoDieta.MascotaId,
-                TipoAlimentoId = dtoDieta.TipoAlimentoId
+                TipoAlimentoId = dtoDieta.TipoAlimentoId,
+                UnidadMedidaId = dtoDieta.UnidadMedidaId
             };
         }
     }
