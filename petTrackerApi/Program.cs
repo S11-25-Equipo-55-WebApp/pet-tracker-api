@@ -42,6 +42,7 @@ builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<EspecieDTO>, EspecieService>();
 builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
 builder.Services.AddScoped<IGenericService<CalendarioDTO>, CalendarioService>();
+builder.Services.AddScoped <IGenericService<EstadoRecordatorioDTO>,EstadoRecordatorioService>();
 
 //Repository
 
@@ -57,6 +58,7 @@ builder.Services.AddScoped<IGenericRepository<TipoVacuna>, TipoVacunaRepository>
 builder.Services.AddScoped<IGenericRepository<TipoAlimento>, TipoAlimentoRepository>();
 builder.Services.AddScoped<ICloudinaryRepository, CloudinaryRepository>();
 builder.Services.AddScoped<IGenericRepository<Calendario>,CalendarioRepository>();
+builder.Services.AddScoped<IGenericRepository<EstadoRecordatorio>, EstadoRecordatorioRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

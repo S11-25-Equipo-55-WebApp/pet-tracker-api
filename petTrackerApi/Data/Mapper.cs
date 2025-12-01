@@ -298,5 +298,29 @@ namespace petTrackerApi.Data
                 UsuarioId = calendario.UsuarioId
             };
         }
+
+        public static EstadoRecordatorio EstadoRecordatorioMapToEntity(EstadoRecordatorioDTO estadoRecordatorio)
+        {
+            return new EstadoRecordatorio
+            {
+                Codigo = estadoRecordatorio.Codigo,
+                CreadoAt = estadoRecordatorio.CreadoAt,
+                EditadoAt = estadoRecordatorio.EditadoAt,
+                EstadoId = estadoRecordatorio.EstadoId,
+                Nombre = estadoRecordatorio.Nombre  
+            };
+        }
+
+        public static EstadoRecordatorioDTO EstadoRecordatorioMapToDTO(EstadoRecordatorio estadoRecordatorio)
+        {
+            return new EstadoRecordatorioDTO
+            {
+                Codigo = estadoRecordatorio.Codigo,
+                CreadoAt = estadoRecordatorio.CreadoAt,
+                EditadoAt = estadoRecordatorio.EditadoAt,
+                EstadoId = estadoRecordatorio.EstadoId,
+                Nombre = estadoRecordatorio.Nombre
+            };
+        }
     }
 }
