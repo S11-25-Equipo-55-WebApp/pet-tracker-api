@@ -12,7 +12,6 @@ using petTrackerApi.Repository.IRepository;
 using petTrackerApi.Services;
 using petTrackerApi.Services.GenericServices;
 using petTrackerApi.Services.IServices;
-using petTrackerApi.Services;
 using System.Text;
 using SubirArchivoClodinary.Services;
 
@@ -42,6 +41,9 @@ builder.Services.AddScoped<IGenericService<TipoAlimentoDTO>, TipoAlimentoService
 builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<EspecieDTO>, EspecieService>();
 builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
+builder.Services.AddScoped<IGenericService<CalendarioDTO>, CalendarioService>();
+builder.Services.AddScoped <IGenericService<EstadoRecordatorioDTO>,EstadoRecordatorioService>();
+builder.Services.AddScoped<IGenericService<TratamientoDTO>, TratamientoService>();
 
 //Repository
 
@@ -56,6 +58,9 @@ builder.Services.AddScoped<IGenericRepository<TipoEvento>, TipoEventoRepository>
 builder.Services.AddScoped<IGenericRepository<TipoVacuna>, TipoVacunaRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoAlimento>, TipoAlimentoRepository>();
 builder.Services.AddScoped<ICloudinaryRepository, CloudinaryRepository>();
+builder.Services.AddScoped<IGenericRepository<Calendario>,CalendarioRepository>();
+builder.Services.AddScoped<IGenericRepository<EstadoRecordatorio>, EstadoRecordatorioRepository>();
+builder.Services.AddScoped<IGenericRepository<Tratamiento>, TratamientoRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
