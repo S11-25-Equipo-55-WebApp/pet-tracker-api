@@ -13,7 +13,7 @@ public partial class TipoExamen
 
     public DateTime CreadoAt { get; set; }
 
-    public DateTime Editado { get; set; }
+    public DateTime EditadoAt { get; set; }
 
     public virtual ICollection<ExamenMedico> ExamenMedicos { get; set; } = new List<ExamenMedico>();
 }
