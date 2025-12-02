@@ -153,7 +153,7 @@ namespace petTrackerApi.Data
                     .HasColumnType("datetime")
                     .HasColumnName("editadoAt");
                 entity.Property(e => e.MascotaId).HasColumnName("mascotaId");
-                entity.Property(e => e.UnidadMedida).HasColumnName("unidadMedidaId");
+                entity.Property(e => e.UnidadMedidaId).HasColumnName("unidadMedidaId");
                 entity.Property(e => e.Notas)
                     .HasColumnType("text")
                     .HasColumnName("notas");
@@ -164,10 +164,10 @@ namespace petTrackerApi.Data
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ControlPeso_Mascota");
 
-                entity.HasOne(d => d.UnidadMedida).WithMany(p => p.ControlPesos)
+                entity.HasOne(u => u.UnidadMedida).WithMany(c => c.ControlPesos)
                     .HasForeignKey(d => d.UnidadMedidaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_Dieta_UnidadMedida");
+                    .HasConstraintName("FK_ControlPeso_UnidadMedida");
             });
 
             modelBuilder.Entity<Desparacitacion>(entity =>

@@ -33,7 +33,7 @@ namespace petTrackerApi.Services
             var mapControl= Mapper.ControlPesoDTOMapToEntity(dtoControlPeso);
             mapControl.CreadoAt = DateTime.Now;
             mapControl.EditadoAt = DateTime.Now;
-            mapControl.Codigo = CodeGenerator.GenerarCodigo(mapControl.MascotaId, mapControl.CreadoAt);
+            mapControl.Codigo = CodeGenerator.GenerarCodigoDobleFechaDateTime(mapControl.MascotaId, mapControl.CreadoAt, mapControl.EditadoAt);
 
             var controlCreado = await _repository.Create(mapControl);
             var controlResult = Mapper.ControlPesoMapToDTO(controlCreado);
@@ -45,6 +45,7 @@ namespace petTrackerApi.Services
             var controlDB = await _repository.GetById(id);
             if (controlDB == null) return null;
 
+            controlDB.Codigo = CodeGenerator.GenerarCodigoDobleFechaDateTime(controlDB.MascotaId, controlDB.CreadoAt, controlDB.EditadoAt);
             controlDB.Peso = dtoControlPeso.Peso;
             controlDB.Notas = dtoControlPeso.Notas; 
             controlDB.MascotaId = dtoControlPeso.MascotaId;
