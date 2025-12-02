@@ -459,5 +459,32 @@ namespace petTrackerApi.Data
                 Codigo = tipoMedicamento.Codigo
             };
         }
+        public static Medicacion MedicacionDTOMapToEntity(MedicacionDTO dtoMedicacion)
+        {
+            return new Medicacion
+            {
+                MedicacionId = dtoMedicacion.MedicacionId,
+                Nombre = dtoMedicacion.Nombre,
+                Codigo = dtoMedicacion.Codigo,
+                Frecuencia = dtoMedicacion.Frecuencia,
+                Descripcion = dtoMedicacion.Descripcion,
+                ConsultaId = dtoMedicacion.ConsultaId,
+                TipoMedicacionId = dtoMedicacion.TipoMedicacionId
+            };
+        }
+
+        public static MedicacionDTO MedicacionMapToDTO(Medicacion medicacion)
+        {
+            return new MedicacionDTO
+            {
+                MedicacionId = medicacion.MedicacionId,
+                Nombre = medicacion.Nombre,
+                Codigo = medicacion.Codigo,
+                Frecuencia = medicacion.Frecuencia,
+                Descripcion = medicacion.Descripcion,
+                ConsultaId = medicacion.ConsultaId,
+                TipoMedicacionId = medicacion.TipoMedicacionId
+            };
+        }
     }
 }
