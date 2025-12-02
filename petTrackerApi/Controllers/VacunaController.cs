@@ -66,7 +66,7 @@ namespace petTrackerApi.Controllers
         }
 
         [HttpGet("obtener-vacunas-por-mascota")]
-        public async Task<IEnumerable<VacunaDTO>> GetMascotasByUser(int id)
+        public async Task<IEnumerable<VacunaDTO>> GetVacunasByMascota(int id)
         {
             return await _service.GetVacunasByIdMascota(id);
         }

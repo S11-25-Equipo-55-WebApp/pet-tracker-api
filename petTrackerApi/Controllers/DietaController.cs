@@ -67,7 +67,7 @@ namespace petTrackerApi.Controllers
         }
 
         [HttpGet("obtener-dietas-por-mascota")]
-        public async Task<IEnumerable<DietaDTO>> GetDietasByUser(int id)
+        public async Task<IEnumerable<DietaDTO>> GetDietasByIdMascota(int id)
         {
             return await _service.GetDietasByIdMascota(id);
         }
