@@ -559,9 +559,9 @@ namespace petTrackerApi.Data
                 entity.Property(e => e.CreadoAt)
                     .HasColumnType("datetime")
                     .HasColumnName("creadoAt");
-                entity.Property(e => e.Editado)
+                entity.Property(e => e.EditadoAt)
                     .HasColumnType("datetime")
-                    .HasColumnName("editado");
+                    .HasColumnName("editadoAt");
                 entity.Property(e => e.Nombre)
                     .HasMaxLength(100)
                     .IsUnicode(false)

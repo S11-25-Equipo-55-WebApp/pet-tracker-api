@@ -486,5 +486,30 @@ namespace petTrackerApi.Data
                 TipoMedicacionId = medicacion.TipoMedicacionId
             };
         }
+        public static ExamenMedico ExamenMedicoDTOMapToEntity(ExamenMedicoDTO dtoExamen)
+        {
+            return new ExamenMedico
+            {
+                ExamenId = dtoExamen.ExamenId,
+                Codigo = dtoExamen.Codigo,
+                FechaExamen = dtoExamen.FechaExamen,
+                Resultado = dtoExamen.Resultado,
+                ConsultaId = dtoExamen.ConsultaId,
+                TipoExamenId = dtoExamen.TipoExamenId
+            };
+        }
+
+        public static ExamenMedicoDTO ExamenMedicoMapToDTO(ExamenMedico examen)
+        {
+            return new ExamenMedicoDTO
+            {
+                ExamenId = examen.ExamenId,
+                Codigo = examen.Codigo,
+                FechaExamen = examen.FechaExamen,
+                Resultado = examen.Resultado,
+                ConsultaId = examen.ConsultaId,
+                TipoExamenId = examen.TipoExamenId
+            };
+        }
     }
 }

@@ -24,7 +24,7 @@
 
             string fechaFormateada2 = fechaProxima.Value.ToString("ddMMyy");
 
-            return $"{idBase}_{fechaFormateada}{fechaProxima}";
+            return $"{idBase}_{fechaFormateada}{fechaFormateada2}";
         }
         public static string GenerarCodigoDobleFechaDateTime(int? idBase, DateTime fecha, DateTime? fechaProxima)
         {
