@@ -411,5 +411,34 @@ namespace petTrackerApi.Data
                 UnidadMedidaId = controlPeso.UnidadMedidaId
             };
         }
+        public static ConsultaClinica ConsultaClinicaDTOMapToEntity(ConsultaClinicaDTO dtoConsultaClinica)
+        {
+            return new ConsultaClinica
+            {
+                ConsultaClinicaId = dtoConsultaClinica.ConsultaClinicaId,
+                Codigo = dtoConsultaClinica.Codigo,
+                FechaConsulta = dtoConsultaClinica.FechaConsulta,
+                Motivo = dtoConsultaClinica.Motivo,
+                Diagnostico = dtoConsultaClinica.Diagnostico,
+                Veterinario = dtoConsultaClinica.Veterinario,
+                Notas = dtoConsultaClinica.Notas,
+                MascotaId = dtoConsultaClinica.MascotaId
+            };
+        }
+
+        public static ConsultaClinicaDTO ConsultaClinicaMapToDTO(ConsultaClinica consultaClinica)
+        {
+            return new ConsultaClinicaDTO
+            {
+                ConsultaClinicaId = consultaClinica.ConsultaClinicaId,
+                Codigo = consultaClinica.Codigo,
+                FechaConsulta = consultaClinica.FechaConsulta,
+                Motivo = consultaClinica.Motivo,
+                Diagnostico = consultaClinica.Diagnostico,
+                Veterinario = consultaClinica.Veterinario,
+                Notas = consultaClinica.Notas,
+                MascotaId = consultaClinica.MascotaId
+            };
+        }
     }
 }
