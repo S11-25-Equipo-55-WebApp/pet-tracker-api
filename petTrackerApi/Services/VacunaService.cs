@@ -33,7 +33,7 @@ namespace petTrackerApi.Services
             var mapVacuna= Mapper.VacunaDTOMapToEntity(dtoVacuna);
             mapVacuna.CreadoAt = DateTime.Now;
             mapVacuna.EditadoAt = DateTime.Now;
-            mapVacuna.Codigo = CodeGenerator.GenerarCodigoVacuna(mapVacuna.MascotaId, mapVacuna.CreadoAt, mapVacuna.FechaProxima);
+            mapVacuna.Codigo = CodeGenerator.GenerarCodigoDobleFecha(mapVacuna.MascotaId, mapVacuna.CreadoAt, mapVacuna.FechaProxima);
 
             var vacunaCreada = await _repository.Create(mapVacuna);
             var vacunaResult = Mapper.VacunaMapToDTO(vacunaCreada);

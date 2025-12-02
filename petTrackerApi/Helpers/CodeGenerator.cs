@@ -18,11 +18,21 @@
 
             return $"{idBase}_{fechaFormateada}";
         }
-        public static string GenerarCodigoVacuna(int? idBase, DateTime fecha, DateOnly? fechaProxima)
+        public static string GenerarCodigoDobleFecha(int? idBase, DateTime fecha, DateOnly? fechaProxima)
         {
-            string fechaFormateada = fechaProxima.Value.ToString("ddMMyy");
+            string fechaFormateada = fecha.ToString("ddMMyy");
 
-            return $"{idBase}_{fechaFormateada}{fechaFormateada}";
+            string fechaFormateada2 = fechaProxima.Value.ToString("ddMMyy");
+
+            return $"{idBase}_{fechaFormateada}{fechaProxima}";
+        }
+        public static string GenerarCodigoDobleFechaDateTime(int? idBase, DateTime fecha, DateTime? fechaProxima)
+        {
+            string fechaFormateada = fecha.ToString("ddMMyy");
+
+            string fechaFormateada2 = fechaProxima.Value.ToString("ddMMyy");
+
+            return $"{idBase}_{fechaFormateada}{fechaFormateada2}";
         }
     }
 }
