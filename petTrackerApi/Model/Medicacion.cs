@@ -11,11 +11,9 @@ public partial class Medicacion
 
     public string Nombre { get; set; } = null!;
 
-    public int Dosis { get; set; }
-
     public int Frecuencia { get; set; }
 
-    public string? Notas { get; set; }
+    public string? Descripcion { get; set; }
 
     public int ConsultaId { get; set; }
 

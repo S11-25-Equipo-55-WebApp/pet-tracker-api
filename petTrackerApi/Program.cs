@@ -36,6 +36,7 @@ builder.Services.AddScoped<IDesparacitacionService, DesparacitacionService>();
 builder.Services.AddScoped<IDietaService, DietaService>();
 builder.Services.AddScoped<IControlPesoService, ControlPesoService>();
 builder.Services.AddScoped<IConsultaClinicaService, ConsultaClinicaService>();
+builder.Services.AddScoped<IMedicacionService, MedicacionService>();
 builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<TipoDesparacitacionDTO>, TipoDesparacitacionService>();
 builder.Services.AddScoped<IGenericService<TipoEventoDTO>, TipoEventoService>();
@@ -58,6 +59,7 @@ builder.Services.AddScoped<IDesparacitacionRepository, DesparacitacionRepository
 builder.Services.AddScoped<IDietaRepository, DietaRepository>();
 builder.Services.AddScoped<IControlPesoRepository, ControlPesoRepository>();
 builder.Services.AddScoped<IConsultaClinicaRepository, ConsultaClinicaRepository>();
+builder.Services.AddScoped<IMedicacionRepository, MedicacionRepository>();
 builder.Services.AddScoped<IGenericRepository<Especie>, EspecieRepository>();
 builder.Services.AddScoped<IGenericRepository<Raza>, RazaRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoDesparacitacion>, TipoDesparacitacionRepository>();

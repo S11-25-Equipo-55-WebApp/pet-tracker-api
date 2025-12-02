@@ -381,7 +381,6 @@ namespace petTrackerApi.Data
                 entity.Property(e => e.CreadoAt)
                     .HasColumnType("datetime")
                     .HasColumnName("creadoAt");
-                entity.Property(e => e.Dosis).HasColumnName("dosis");
                 entity.Property(e => e.EditadoAt)
                     .HasColumnType("datetime")
                     .HasColumnName("editadoAt");
@@ -390,9 +389,9 @@ namespace petTrackerApi.Data
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("nombre");
-                entity.Property(e => e.Notas)
+                entity.Property(e => e.Descripcion)
                     .HasColumnType("text")
-                    .HasColumnName("notas");
+                    .HasColumnName("descripcion");
                 entity.Property(e => e.TipoMedicacionId).HasColumnName("tipoMedicacionId");
 
                 entity.HasOne(d => d.Consulta).WithMany(p => p.Medicacions)
