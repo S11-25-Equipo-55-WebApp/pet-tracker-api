@@ -9,5 +9,6 @@
         public string Abreviatura { get; set; } = null!;
 
         public virtual ICollection<Dieta> Dieta { get; set; } = new List<Dieta>();
+        public virtual ICollection<ControlPeso> ControlPesos { get; set; } = new List<ControlPeso>();
     }
 }

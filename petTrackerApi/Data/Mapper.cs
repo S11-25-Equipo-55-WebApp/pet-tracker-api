@@ -386,5 +386,30 @@ namespace petTrackerApi.Data
                 Notas = tratamiento.Notas
             };
         }
+        public static ControlPeso ControlPesoDTOMapToEntity(ControlPesoDTO dtoControlPeso)
+        {
+            return new ControlPeso
+            {
+                ControlPesoId = dtoControlPeso.ControlPesoId,
+                Codigo = dtoControlPeso.Codigo,
+                Peso = dtoControlPeso.Peso,
+                Notas = dtoControlPeso.Notas,
+                MascotaId = dtoControlPeso.MascotaId,
+                UnidadMedidaId = dtoControlPeso.UnidadMedidaId
+            };
+        }
+
+        public static ControlPesoDTO ControlPesoMapToDTO(ControlPeso controlPeso)
+        {
+            return new ControlPesoDTO
+            {
+                ControlPesoId = controlPeso.ControlPesoId,
+                Codigo = controlPeso.Codigo,
+                Peso = controlPeso.Peso,
+                Notas = controlPeso.Notas,
+                MascotaId = controlPeso.MascotaId,
+                UnidadMedidaId = controlPeso.UnidadMedidaId
+            };
+        }
     }
 }
