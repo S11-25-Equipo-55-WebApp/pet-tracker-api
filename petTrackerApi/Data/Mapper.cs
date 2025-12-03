@@ -351,6 +351,30 @@ namespace petTrackerApi.Data
             };
         }
 
+        public static TipoExamen TipoExamenDTOMapToEntity(TipoExamenDTO tipoExamen)
+        {
+            return new TipoExamen
+            {
+                TipoExamenId = tipoExamen.TipoExamenId,
+                Nombre = tipoExamen.Nombre,
+                EditadoAt = tipoExamen.EditadoAt,
+                Codigo = tipoExamen.Codigo,
+                CreadoAt = tipoExamen.CreadoAt,
+            };
+        }
+
+        public static TipoExamenDTO TipoExamenMapToDTO(TipoExamen tipoExamen)
+        {
+            return new TipoExamenDTO
+            {
+                TipoExamenId = tipoExamen.TipoExamenId,
+                Nombre = tipoExamen.Nombre,
+                EditadoAt = tipoExamen.EditadoAt,
+                Codigo = tipoExamen.Codigo,
+                CreadoAt = tipoExamen.CreadoAt,
+            };
+        }
+
         public static Tratamiento TratamientoDTOMapToEntity(TratamientoDTO tratamiento)
         {
             return new Tratamiento
