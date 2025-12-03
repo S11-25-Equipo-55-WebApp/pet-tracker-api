@@ -33,6 +33,11 @@ builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IMascotaService, MascotaService>();
 builder.Services.AddScoped<IVacunaService, VacunaService>();
 builder.Services.AddScoped<IDesparacitacionService, DesparacitacionService>();
+builder.Services.AddScoped<IDietaService, DietaService>();
+builder.Services.AddScoped<IControlPesoService, ControlPesoService>();
+builder.Services.AddScoped<IConsultaClinicaService, ConsultaClinicaService>();
+builder.Services.AddScoped<IMedicacionService, MedicacionService>();
+builder.Services.AddScoped<IExamenMedicoService, ExamenMedicoService>();
 builder.Services.AddScoped<IGenericService<RazaDTO>, RazaService>();
 builder.Services.AddScoped<IGenericService<TipoDesparacitacionDTO>, TipoDesparacitacionService>();
 builder.Services.AddScoped<IGenericService<TipoEventoDTO>, TipoEventoService>();
@@ -45,6 +50,7 @@ builder.Services.AddScoped<IGenericService<CalendarioDTO>, CalendarioService>();
 builder.Services.AddScoped <IGenericService<EstadoRecordatorioDTO>,EstadoRecordatorioService>();
 builder.Services.AddScoped<IGenericService<TratamientoDTO>, TratamientoService>();
 builder.Services.AddScoped<IGenericService<TipoExamenDTO>, TipoExamenService>();
+builder.Services.AddScoped<IGenericService<TipoMedicamentoDTO>, TipoMedicamentoService>();
 
 //Repository
 
@@ -52,6 +58,11 @@ builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IMascotaRepository, MascotaRepository>();
 builder.Services.AddScoped<IVacunaRepository, VacunaRepository>();
 builder.Services.AddScoped<IDesparacitacionRepository, DesparacitacionRepository>();
+builder.Services.AddScoped<IDietaRepository, DietaRepository>();
+builder.Services.AddScoped<IControlPesoRepository, ControlPesoRepository>();
+builder.Services.AddScoped<IConsultaClinicaRepository, ConsultaClinicaRepository>();
+builder.Services.AddScoped<IMedicacionRepository, MedicacionRepository>();
+builder.Services.AddScoped<IExamenMedicoRepository, ExamenMedicoRepository>();
 builder.Services.AddScoped<IGenericRepository<Especie>, EspecieRepository>();
 builder.Services.AddScoped<IGenericRepository<Raza>, RazaRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoDesparacitacion>, TipoDesparacitacionRepository>();
@@ -63,6 +74,7 @@ builder.Services.AddScoped<IGenericRepository<Calendario>,CalendarioRepository>(
 builder.Services.AddScoped<IGenericRepository<EstadoRecordatorio>, EstadoRecordatorioRepository>();
 builder.Services.AddScoped<IGenericRepository<Tratamiento>, TratamientoRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoExamen>, TipoExamenRepository>();
+builder.Services.AddScoped<IGenericRepository<TipoMedicamento>, TipoMedicamentoRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

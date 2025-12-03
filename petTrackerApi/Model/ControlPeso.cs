@@ -11,6 +11,8 @@ public partial class ControlPeso
 
     public int Peso { get; set; }
 
+    public int UnidadMedidaId { get; set; }
+
     public DateTime CreadoAt { get; set; }
 
     public DateTime? EditadoAt { get; set; }
@@ -20,4 +22,6 @@ public partial class ControlPeso
     public int MascotaId { get; set; }
 
     public virtual Mascota Mascota { get; set; } = null!;
+
+    public virtual UnidadMedida UnidadMedida { get; set; } = null!;
 }

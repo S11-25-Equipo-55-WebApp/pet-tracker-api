@@ -153,6 +153,7 @@ namespace petTrackerApi.Data
                     .HasColumnType("datetime")
                     .HasColumnName("editadoAt");
                 entity.Property(e => e.MascotaId).HasColumnName("mascotaId");
+                entity.Property(e => e.UnidadMedidaId).HasColumnName("unidadMedidaId");
                 entity.Property(e => e.Notas)
                     .HasColumnType("text")
                     .HasColumnName("notas");
@@ -162,6 +163,11 @@ namespace petTrackerApi.Data
                     .HasForeignKey(d => d.MascotaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_ControlPeso_Mascota");
+
+                entity.HasOne(u => u.UnidadMedida).WithMany(c => c.ControlPesos)
+                    .HasForeignKey(d => d.UnidadMedidaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_ControlPeso_UnidadMedida");
             });
 
             modelBuilder.Entity<Desparacitacion>(entity =>
@@ -204,8 +210,9 @@ namespace petTrackerApi.Data
 
             modelBuilder.Entity<Dieta>(entity =>
             {
-                entity.HasKey(e => e.DietaId);
+                entity.ToTable("Dieta");
 
+                entity.HasKey(e => e.DietaId);
                 entity.Property(e => e.DietaId).HasColumnName("dietaId");
                 entity.Property(e => e.Codigo)
                     .HasMaxLength(50)
@@ -233,6 +240,12 @@ namespace petTrackerApi.Data
                     .HasForeignKey(d => d.TipoAlimentoId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Dieta_TipoAlimento");
+
+                entity.HasOne(d => d.UnidadMedida).WithMany(p => p.Dieta)
+                    .HasForeignKey(d => d.UnidadMedidaId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Dieta_UnidadMedida");
+
             });
 
             modelBuilder.Entity<Especie>(entity =>
@@ -368,7 +381,6 @@ namespace petTrackerApi.Data
                 entity.Property(e => e.CreadoAt)
                     .HasColumnType("datetime")
                     .HasColumnName("creadoAt");
-                entity.Property(e => e.Dosis).HasColumnName("dosis");
                 entity.Property(e => e.EditadoAt)
                     .HasColumnType("datetime")
                     .HasColumnName("editadoAt");
@@ -377,9 +389,9 @@ namespace petTrackerApi.Data
                     .HasMaxLength(100)
                     .IsUnicode(false)
                     .HasColumnName("nombre");
-                entity.Property(e => e.Notas)
+                entity.Property(e => e.Descripcion)
                     .HasColumnType("text")
-                    .HasColumnName("notas");
+                    .HasColumnName("descripcion");
                 entity.Property(e => e.TipoMedicacionId).HasColumnName("tipoMedicacionId");
 
                 entity.HasOne(d => d.Consulta).WithMany(p => p.Medicacions)
@@ -728,6 +740,20 @@ namespace petTrackerApi.Data
                     .HasForeignKey(d => d.TipoVacunaId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Vacuna_TipoVacuna");
+            });
+            modelBuilder.Entity<UnidadMedida>(entity =>
+            {
+                entity.ToTable("UnidadMedida");
+
+                entity.Property(e => e.UnidadMedidaId).HasColumnName("unidadMedidaId");
+                entity.Property(e => e.Nombre)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("nombre");
+                entity.Property(e => e.Abreviatura)
+                    .HasMaxLength(50)
+                    .IsUnicode(false)
+                    .HasColumnName("abreviatura");
             });
 
             OnModelCreatingPartial(modelBuilder);

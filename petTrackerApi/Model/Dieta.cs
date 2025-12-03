@@ -21,7 +21,11 @@ public partial class Dieta
 
     public int TipoAlimentoId { get; set; }
 
+    public int UnidadMedidaId { get; set; }
+
     public virtual Mascota Mascota { get; set; } = null!;
 
     public virtual TipoAlimento TipoAlimento { get; set; } = null!;
+
+    public virtual UnidadMedida UnidadMedida { get; set; } = null!;
 }

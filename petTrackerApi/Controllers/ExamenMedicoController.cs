@@ -8,37 +8,37 @@ namespace petTrackerApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class VacunaController : ControllerBase
+    public class ExamenMedicoController : ControllerBase
     {
-        private readonly IVacunaService _service;
-        public VacunaController(IVacunaService services)
+        private readonly IExamenMedicoService _service;
+        public ExamenMedicoController(IExamenMedicoService services)
         {
             _service = services;
         }
-        // GET: api/<VacunaController>
+        // GET: api/<ExamenMedicoController>
         [HttpGet]
-        public async Task<IEnumerable<VacunaDTO>> Get()
+        public async Task<IEnumerable<ExamenMedicoDTO>> Get()
         {
             return await _service.Get();
         }
 
-        // GET api/<VacunaController>/5
+        // GET api/<ExamenMedicoController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<VacunaDTO>> GetById(int id)
+        public async Task<ActionResult<ExamenMedicoDTO>> GetById(int id)
         {
             var result = await _service.GetById(id);
             if (result == null) return NotFound();
             return Ok(result);
         }
 
-        // POST api/<VacunaController>
+        // POST api/<ExamenMedicoController>
         [HttpPost]
-        public async Task<IActionResult> CrearVacuna([FromBody] VacunaDTO dtoVacuna)
+        public async Task<IActionResult> CrearExamenMedico([FromBody] ExamenMedicoDTO dtoExamen)
         {
             try
             {
-                var vacunaCreada = await _service.Create(dtoVacuna);
-                return CreatedAtAction(nameof(GetById), new { id = vacunaCreada.VacunaId}, vacunaCreada);
+                var examenCreada = await _service.Create(dtoExamen);
+                return CreatedAtAction(nameof(GetById), new { id = examenCreada.ExamenId }, examenCreada);
             }
             catch (Exception ex)
             {
@@ -46,17 +46,17 @@ namespace petTrackerApi.Controllers
             }
         }
 
-        // PUT api/<VacunaController>/5
+        // PUT api/<ExamenMedicoController>/5
         [HttpPut("{id}")]
-        public async Task<ActionResult<VacunaDTO>> Update(int id, [FromBody] VacunaDTO dtoVacuna)
+        public async Task<ActionResult<ExamenMedicoDTO>> Update(int id, [FromBody] ExamenMedicoDTO dtoExamen)
         {
-            var actualizado = await _service.Update(id, dtoVacuna);
+            var actualizado = await _service.Update(id, dtoExamen);
             if (actualizado == null) return NotFound();
 
             return Ok(actualizado);
         }
 
-        // DELETE api/<VacunaController>/5
+        // DELETE api/<ExamenMedicoController>/5
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(int id)
         {
@@ -65,10 +65,10 @@ namespace petTrackerApi.Controllers
             return Ok(respuesta);
         }
 
-        [HttpGet("obtener-vacunas-por-mascota")]
-        public async Task<IEnumerable<VacunaDTO>> GetVacunasByMascota(int id)
+        [HttpGet("obtener-examenes-por-consulta")]
+        public async Task<IEnumerable<ExamenMedicoDTO>> GetExamenesByConsultaId(int id)
         {
-            return await _service.GetVacunasByIdMascota(id);
+            return await _service.GetExamenMedicoByConsultaId(id);
         }
     }
 }

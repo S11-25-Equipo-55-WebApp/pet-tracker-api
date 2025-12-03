@@ -264,6 +264,34 @@ namespace petTrackerApi.Data
                 Codigo = dtoTipoAlimento.Codigo
             };
         }
+        public static DietaDTO DietaMapToDTO(Dieta dieta)
+        {
+            return new DietaDTO
+            {
+                DietaId = dieta.DietaId,
+                Codigo = dieta.Codigo,
+                PorcionDia = dieta.PorcionDia,
+                Notas = dieta.Notas,
+                MascotaId = dieta.MascotaId,
+                TipoAlimentoId = dieta.TipoAlimentoId,
+                UnidadMedidaId = dieta.UnidadMedidaId
+
+            };
+        }
+
+        public static Dieta DietaDTOMapToEntity(DietaDTO dtoDieta)
+        {
+            return new Dieta
+            {
+                DietaId = dtoDieta.DietaId,
+                Codigo = dtoDieta.Codigo,
+                PorcionDia = dtoDieta.PorcionDia,
+                Notas = dtoDieta.Notas,
+                MascotaId = dtoDieta.MascotaId,
+                TipoAlimentoId = dtoDieta.TipoAlimentoId,
+                UnidadMedidaId = dtoDieta.UnidadMedidaId
+            };
+        }
 
         public static Calendario CalendatioDTOMapToEntity(CalendarioDTO calendario)
         {
@@ -380,6 +408,131 @@ namespace petTrackerApi.Data
                 Frecuencia = tratamiento.Frecuencia,
                 Nombre = tratamiento.Nombre,
                 Notas = tratamiento.Notas
+            };
+        }
+        public static ControlPeso ControlPesoDTOMapToEntity(ControlPesoDTO dtoControlPeso)
+        {
+            return new ControlPeso
+            {
+                ControlPesoId = dtoControlPeso.ControlPesoId,
+                Codigo = dtoControlPeso.Codigo,
+                Peso = dtoControlPeso.Peso,
+                Notas = dtoControlPeso.Notas,
+                MascotaId = dtoControlPeso.MascotaId,
+                UnidadMedidaId = dtoControlPeso.UnidadMedidaId
+            };
+        }
+
+        public static ControlPesoDTO ControlPesoMapToDTO(ControlPeso controlPeso)
+        {
+            return new ControlPesoDTO
+            {
+                ControlPesoId = controlPeso.ControlPesoId,
+                Codigo = controlPeso.Codigo,
+                Peso = controlPeso.Peso,
+                Notas = controlPeso.Notas,
+                MascotaId = controlPeso.MascotaId,
+                UnidadMedidaId = controlPeso.UnidadMedidaId
+            };
+        }
+        public static ConsultaClinica ConsultaClinicaDTOMapToEntity(ConsultaClinicaDTO dtoConsultaClinica)
+        {
+            return new ConsultaClinica
+            {
+                ConsultaClinicaId = dtoConsultaClinica.ConsultaClinicaId,
+                Codigo = dtoConsultaClinica.Codigo,
+                FechaConsulta = dtoConsultaClinica.FechaConsulta,
+                Motivo = dtoConsultaClinica.Motivo,
+                Diagnostico = dtoConsultaClinica.Diagnostico,
+                Veterinario = dtoConsultaClinica.Veterinario,
+                Notas = dtoConsultaClinica.Notas,
+                MascotaId = dtoConsultaClinica.MascotaId
+            };
+        }
+
+        public static ConsultaClinicaDTO ConsultaClinicaMapToDTO(ConsultaClinica consultaClinica)
+        {
+            return new ConsultaClinicaDTO
+            {
+                ConsultaClinicaId = consultaClinica.ConsultaClinicaId,
+                Codigo = consultaClinica.Codigo,
+                FechaConsulta = consultaClinica.FechaConsulta,
+                Motivo = consultaClinica.Motivo,
+                Diagnostico = consultaClinica.Diagnostico,
+                Veterinario = consultaClinica.Veterinario,
+                Notas = consultaClinica.Notas,
+                MascotaId = consultaClinica.MascotaId
+            };
+        }
+        public static TipoMedicamento TipoMedicamentoDTOMapToEntity(TipoMedicamentoDTO dtotipoMedicamento)
+        {
+            return new TipoMedicamento
+            {
+                TipoMedId = dtotipoMedicamento.TipoMedId,
+                Nombre = dtotipoMedicamento.Nombre,
+                Codigo = dtotipoMedicamento.Codigo
+            };
+        }
+
+        public static TipoMedicamentoDTO TipoMedicamentoMapToDTO(TipoMedicamento tipoMedicamento)
+        {
+            return new TipoMedicamentoDTO
+            {
+                TipoMedId = tipoMedicamento.TipoMedId,
+                Nombre = tipoMedicamento.Nombre,
+                Codigo = tipoMedicamento.Codigo
+            };
+        }
+        public static Medicacion MedicacionDTOMapToEntity(MedicacionDTO dtoMedicacion)
+        {
+            return new Medicacion
+            {
+                MedicacionId = dtoMedicacion.MedicacionId,
+                Nombre = dtoMedicacion.Nombre,
+                Codigo = dtoMedicacion.Codigo,
+                Frecuencia = dtoMedicacion.Frecuencia,
+                Descripcion = dtoMedicacion.Descripcion,
+                ConsultaId = dtoMedicacion.ConsultaId,
+                TipoMedicacionId = dtoMedicacion.TipoMedicacionId
+            };
+        }
+
+        public static MedicacionDTO MedicacionMapToDTO(Medicacion medicacion)
+        {
+            return new MedicacionDTO
+            {
+                MedicacionId = medicacion.MedicacionId,
+                Nombre = medicacion.Nombre,
+                Codigo = medicacion.Codigo,
+                Frecuencia = medicacion.Frecuencia,
+                Descripcion = medicacion.Descripcion,
+                ConsultaId = medicacion.ConsultaId,
+                TipoMedicacionId = medicacion.TipoMedicacionId
+            };
+        }
+        public static ExamenMedico ExamenMedicoDTOMapToEntity(ExamenMedicoDTO dtoExamen)
+        {
+            return new ExamenMedico
+            {
+                ExamenId = dtoExamen.ExamenId,
+                Codigo = dtoExamen.Codigo,
+                FechaExamen = dtoExamen.FechaExamen,
+                Resultado = dtoExamen.Resultado,
+                ConsultaId = dtoExamen.ConsultaId,
+                TipoExamenId = dtoExamen.TipoExamenId
+            };
+        }
+
+        public static ExamenMedicoDTO ExamenMedicoMapToDTO(ExamenMedico examen)
+        {
+            return new ExamenMedicoDTO
+            {
+                ExamenId = examen.ExamenId,
+                Codigo = examen.Codigo,
+                FechaExamen = examen.FechaExamen,
+                Resultado = examen.Resultado,
+                ConsultaId = examen.ConsultaId,
+                TipoExamenId = examen.TipoExamenId
             };
         }
     }
