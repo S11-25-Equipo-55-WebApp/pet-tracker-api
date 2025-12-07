@@ -51,6 +51,7 @@ builder.Services.AddScoped <IGenericService<EstadoRecordatorioDTO>,EstadoRecorda
 builder.Services.AddScoped<IGenericService<TratamientoDTO>, TratamientoService>();
 builder.Services.AddScoped<IGenericService<TipoExamenDTO>, TipoExamenService>();
 builder.Services.AddScoped<IGenericService<TipoMedicamentoDTO>, TipoMedicamentoService>();
+builder.Services.AddScoped<IGenericService<UnidadMedidaDTO>, UnidadMedidaService>();
 
 //Repository
 
@@ -75,6 +76,7 @@ builder.Services.AddScoped<IGenericRepository<EstadoRecordatorio>, EstadoRecorda
 builder.Services.AddScoped<IGenericRepository<Tratamiento>, TratamientoRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoExamen>, TipoExamenRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoMedicamento>, TipoMedicamentoRepository>();
+builder.Services.AddScoped<IGenericRepository<UnidadMedida>, UnidadMedidaRepository>();
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
