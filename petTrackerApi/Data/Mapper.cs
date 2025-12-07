@@ -535,5 +535,25 @@ namespace petTrackerApi.Data
                 TipoExamenId = examen.TipoExamenId
             };
         }
+
+        public static UnidadMedida UnidadMedidaDTOMapToEntity(UnidadMedidaDTO dtoUnidadMedida)
+        {
+            return new UnidadMedida
+            {
+                UnidadMedidaId = dtoUnidadMedida.UnidadMedidaId,
+                Nombre = dtoUnidadMedida.Nombre,
+                Abreviatura = dtoUnidadMedida.Abreviatura
+            };
+        }
+
+        public static UnidadMedidaDTO UnidadMedidaMapToDTO(UnidadMedida unidadMedida)
+        {
+            return new UnidadMedidaDTO
+            {
+                UnidadMedidaId = unidadMedida.UnidadMedidaId,
+                Nombre = unidadMedida.Nombre,
+                Abreviatura = unidadMedida.Abreviatura
+            };
+        }
     }
 }
