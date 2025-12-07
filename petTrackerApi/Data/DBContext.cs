@@ -51,6 +51,8 @@ namespace petTrackerApi.Data
 
         public virtual DbSet<Vacuna> Vacunas { get; set; }
 
+        public virtual DbSet<UnidadMedida> UnidadesMedidas { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Calendario>(entity =>
