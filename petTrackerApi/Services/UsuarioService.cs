@@ -69,8 +69,8 @@ namespace petTrackerApi.Services
             if (!_repo.IsUniqueUsuario(dto.UserName))
                 throw new ArgumentException ("Nombre del userName ya existe.");
 
-            if (!_repo.IsUniqueEmail(dto.Email))
-                throw new ArgumentException("Ya existe un usuario con esa cuenta de email.");
+            //if (!_repo.IsUniqueEmail(dto.Email))
+            //    throw new ArgumentException("Ya existe un usuario con esa cuenta de email.");
 
             if (!_repo.IsUniqueNombre(dto.Nombre))
                 throw new ArgumentException("Ya existe un usuario con ese nombre");
@@ -167,6 +167,85 @@ namespace petTrackerApi.Services
             await _repo.UpdatePassword(usuario);
 
             return (true, null);
+        }
+
+        public async Task<(bool Exito, string Error)> ForgotPassword(string email)
+        {
+            var usuario = await _repo.GetByEmail(email);
+
+            if (usuario == null)
+                return (false, "El correo no está registrado.");
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(_config["ApiSetting:Secreta"]);
+            //var key = Encoding.ASCII.GetBytes(_config["ApiSetting:Secreta"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                            Subject = new ClaimsIdentity(new[]
+                {
+                    new Claim(JwtRegisteredClaimNames.Sub, usuario.Email),
+                    new Claim("email", usuario.Email), // opcional, por compatibilidad
+                    new Claim(JwtRegisteredClaimNames.Iat,
+                        DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString(),
+                        ClaimValueTypes.Integer)
+                }),
+                            Expires = DateTime.UtcNow.AddHours(1),
+                            SigningCredentials = new SigningCredentials(
+                    new SymmetricSecurityKey(key),
+                    SecurityAlgorithms.HmacSha256Signature
+                )
+            };
+
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var resetToken = tokenHandler.WriteToken(token);
+
+            Console.WriteLine($"RESET LINK: https://tusitio/reset?token={resetToken}");
+
+            return (true, null);
+        }
+
+        public async Task<(bool Exito, string Error)> ResetPassword(string token, string newPassword)
+        {
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.UTF8.GetBytes(_config["ApiSetting:Secreta"]);
+
+            try
+            {
+                var principal = tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ClockSkew = TimeSpan.Zero
+                }, out _);
+
+                var email =
+                    principal.Claims.FirstOrDefault(c => c.Type == "email")?.Value ??
+                    principal.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Sub)?.Value ??
+                    principal.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+
+                if (string.IsNullOrEmpty(email))
+                    return (false, "No se pudo obtener el email del token.");
+
+                var usuario = await _repo.GetByEmail(email);
+                if (usuario == null)
+                    return (false, "Usuario no encontrado.");
+
+                var hasher = new PasswordHasher<Usuario>();
+                usuario.Password = hasher.HashPassword(usuario, newPassword);
+
+                await _repo.UpdatePassword(usuario);
+
+                return (true, null);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"TOKEN ERROR: {ex.Message}");
+                return (false, "Token inválido o expirado.");
+            }
         }
 
     }

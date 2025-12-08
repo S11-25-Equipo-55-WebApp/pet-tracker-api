@@ -16,6 +16,6 @@ namespace petTrackerApi.Repository.IRepository
         bool IsUniqueNombre(string nombre);
         Task<Usuario> GetByIdEntity(int id);
         Task UpdatePassword(Usuario usuario);
-
+        Task<Usuario> GetByEmail(string email);
     }
 }

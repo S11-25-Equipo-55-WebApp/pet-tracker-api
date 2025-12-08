@@ -97,6 +97,11 @@ namespace petTrackerApi.Repository
         {
             _db.Usuarios.Update(usuario);
             await _db.SaveChangesAsync();
-        }        
+        }
+
+        public async Task<Usuario> GetByEmail(string email)
+        {
+            return await _db.Usuarios.FirstOrDefaultAsync(u => u.Email == email);
+        }
     }    
 }
