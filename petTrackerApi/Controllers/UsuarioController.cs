@@ -95,6 +95,57 @@ namespace petTrackerApi.Controllers
 
             return Ok("Contraseña actualizada correctamente.");
         }
+
+
+
+        // ==========================================================
+        //      🔹 1. Solicitar recuperación de contraseña
+        // ==========================================================
+        [HttpPost("forgot-password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDTO dto)
+        {
+            if (string.IsNullOrWhiteSpace(dto.Email))
+                return BadRequest("El email es obligatorio.");
+
+            var result = await _service.ForgotPassword(dto.Email);
+
+            if (!result.Exito)
+                return BadRequest(result.Error);
+
+            return Ok("Si el correo está registrado, se enviaron instrucciones de recuperación.");
+        }
+
+
+        // ==========================================================
+        //      🔹 2. Cambiar contraseña usando token
+        // ==========================================================
+        [HttpPost("reset-password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDTO dto)
+        {
+            if (string.IsNullOrWhiteSpace(dto.Token))
+                return BadRequest("El token es obligatorio.");
+
+            if (string.IsNullOrWhiteSpace(dto.NewPassword))
+                return BadRequest("La nueva contraseña es obligatoria.");
+
+            var result = await _service.ResetPassword(dto.Token, dto.NewPassword);
+
+            if (!result.Exito)
+                return BadRequest(result.Error);
+
+            return Ok("La contraseña fue restablecida correctamente.");
+        }
+
+        [HttpGet("check-time")]
+        public IActionResult CheckServerTime()
+        {
+            return Ok(new
+            {
+                ServerLocal = DateTime.Now,
+                ServerUtc = DateTime.UtcNow,
+                UnixTime = DateTimeOffset.UtcNow.ToUnixTimeSeconds()
+            });
+        }
     }
 
 }

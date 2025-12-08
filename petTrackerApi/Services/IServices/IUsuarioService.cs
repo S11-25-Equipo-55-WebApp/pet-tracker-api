@@ -13,6 +13,9 @@ namespace petTrackerApi.Services.IServices
         bool IsUniqueUsuario(string username);
         Task<(bool Exito, string Error)> CambiarPassword(int usuarioId, string passwordActual, string passwordNuevo);
 
+        Task<(bool Exito, string Error)> ForgotPassword(string email);
+        Task<(bool Exito, string Error)> ResetPassword(string token, string newPassword);
+
 
     }
 }
