@@ -14,6 +14,7 @@ using petTrackerApi.Services.GenericServices;
 using petTrackerApi.Services.IServices;
 using System.Text;
 using SubirArchivoClodinary.Services;
+using petTrackerApi.Model.Clases;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -77,6 +78,9 @@ builder.Services.AddScoped<IGenericRepository<Tratamiento>, TratamientoRepositor
 builder.Services.AddScoped<IGenericRepository<TipoExamen>, TipoExamenRepository>();
 builder.Services.AddScoped<IGenericRepository<TipoMedicamento>, TipoMedicamentoRepository>();
 builder.Services.AddScoped<IGenericRepository<UnidadMedida>, UnidadMedidaRepository>();
+
+builder.Services.AddTransient<IMessage, Message>();
+builder.Services.Configure<GmailSettings>(builder.Configuration.GetSection("GmailSettings"));
 
 builder.Services.AddDbContext<DBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
